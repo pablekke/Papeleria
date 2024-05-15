@@ -1,0 +1,116 @@
+﻿@*
+@model CrearPedidoExpressViewModel
+
+@{
+    Layout = "_LayoutUsuario";
+    ViewData["Title"] = "Crear Pedido exprés";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="AgregarLineaExpress" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label asp-for="ClienteId">Cliente</label>
+        <select asp-for="ClienteId" asp-items="@(new SelectList(Model.Clientes, "Id", "Nombre"))" class="form-control">
+            <option value="">Seleccione un cliente</option>
+        </select>
+        <span asp-validation-for="ClienteId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Artículo</label>
+        <select id="ArticuloId" class="form-control">
+            @foreach (var articulo in Model.Articulos)
+            {
+                <option value="@articulo.Id">@articulo.Nombre</option>
+            }
+        </select>
+    </div>
+
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="entregaMismoDia" asp-for="EntregaMismoDia">
+        <label class="custom-control-label" for="entregaMismoDia">Entrega el mismo día</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Agregar Línea</button>
+</form>
+
+<div>
+    <h3>Detalle del Pedido</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var linea in Model.Lineas)
+            {
+                <tr>
+                    <td>@linea.Descripcion</td>
+                    <td>@linea.Cantidad</td>
+                    <td>@linea.PrecioUnitario</td>
+                    <td>@linea.Subtotal</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        // Esta función agrega una nueva línea de pedido al formulario
+        function agregarLinea() {
+            var articuloId = document.getElementById('ArticuloId').value;
+            var articuloNombre = document.getElementById('ArticuloId').options[document.getElementById('ArticuloId').selectedIndex].text;
+            var cantidad = 1; // Puedes ajustar para permitir seleccionar cantidad
+
+            // Crear los elementos HTML para la nueva línea
+            var tbody = document.querySelector('table tbody');
+            var tr = document.createElement('tr');
+
+            tr.innerHTML = `
+                        <td>${articuloNombre}</td>
+                        <td><input type="number" value="${cantidad}" class="form-control" readonly/></td>
+                        <td><input type="text" class="form-control" readonly/></td>
+                        <td><input type="text" class="form-control subtotal" readonly/></td>
+                        <td><button type="button" class="btn btn-danger" onclick="eliminarLinea(this)">Eliminar</button></td>
+                    `;
+
+            // Agregar la nueva línea a la tabla
+            tbody.appendChild(tr);
+
+            // Opcional: Actualizar el total
+            actualizarTotal();
+        }
+
+        // Esta función elimina una línea de pedido existente
+        function eliminarLinea(button) {
+            var tr = button.parentNode.parentNode;
+            tr.parentNode.removeChild(tr);
+
+            // Opcional: Actualizar el total
+            actualizarTotal();
+        }
+
+        // Esta función actualiza el total de todos los subtotales
+        function actualizarTotal() {
+            var subtotales = document.querySelectorAll('.subtotal');
+            var total = 0;
+            subtotales.forEach(function (subtotal) {
+                total += parseFloat(subtotal.value) || 0;
+            });
+            document.getElementById('total').value = total.toFixed(2);
+        }
+
+        // Event listeners
+        document.getElementById('agregarLinea').addEventListener('click', agregarLinea);
+
+    </script>
+}
+*@

@@ -1,0 +1,40 @@
+﻿@model EditarUsuarioViewModel
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["Title"] = "Editar Usuario";
+}
+
+<form asp-action="Editar" class="formulario col-lg-6 col-md-8 col-sm-10 p-4">
+    @Html.AntiForgeryToken()
+    <h3>@ViewData["Title"]</h3>
+    <div class="form-group">
+        <label asp-for="Nombre">Nombre</label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Apellido">Apellido</label>
+        <input asp-for="Apellido" class="form-control" />
+        <span asp-validation-for="Apellido" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" class="form-control" type="email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group form-check">
+        <label class="switch">
+            Es administrador
+            <input type="checkbox" asp-for="EsAdmin" class="admin-toggle">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="boton fondoAzul btn-block rounded-3">Guardar cambios</button>
+    </div>
+    <div class="form-group">
+        <span class="text-danger">@ViewBag.Error</span>
+    </div>
+</form>

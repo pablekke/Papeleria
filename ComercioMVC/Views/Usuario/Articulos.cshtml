@@ -1,0 +1,55 @@
+﻿@using Dominio.DTOs;
+@model List<ArticuloDTO>
+@{
+    Layout = "_LayoutUsuario";
+    ViewData["Title"] = "Articulos";
+}
+<title>Artículos</title>
+
+<div class="container my-2">
+    <div class="justify-content-between row d-flex">
+        <h1 class="col-8">@ViewData["Title"]</h1>
+        <div class="col-12 text-md-center my-0 auto col-md-4">
+            <a href="@Url.Action("RegistroArticulo", "Usuario")" class="btn fondo1 text-white">
+                + Crear artículo
+            </a>
+        </div>
+    </div>
+</div>
+<form asp-action="Articulos" method="get" class="bg-light border rounded my-3">
+    <div class="form-group row d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center">
+        <!-- Cuadro de búsqueda -->
+        <div class="col-12 col-md-4 col-lg-4">
+            <input type="text" name="nombre" class="form-control" placeholder="🔍 Buscar nombre..." style="background-color: #EEE7DA;">
+        </div>
+        <div class="col-12 col-md-4 col-lg-4 my-2 my-md-auto">
+            <input type="number" name="monto" class="form-control" placeholder="💲 Buscar por monto..." style="background-color: #EEE7DA;">
+        </div>
+        <!-- Botón de filtrar centrado -->
+        <div class="col-12 col-md-4 col-lg-4">
+            <button type="submit" class="text-white boton btn-block fondo1 rounded-3 w-100">Filtrar</button>
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    @foreach (var articulo in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header fondo3 text-dark">
+                    <h4 class="m-0">@articulo.Nombre</h4>
+                </div>
+                <div class="card-body">
+                    <p>@articulo.Descripcion</p>
+                    <p><strong>Código:</strong> @articulo.Codigo</p>
+                    <p><strong>Precio:</strong> $@articulo.Precio</p>
+                    <p><strong>Stock:</strong> @articulo.Stock</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn boton fondo1 text-white">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

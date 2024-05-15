@@ -1,0 +1,66 @@
+﻿@model ListarClientesViewModel
+
+@{
+    Layout = "_LayoutUsuario";
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+<div class="container mt-2">
+    <div class="justify-content-between row d-flex">
+        <h1 class="col-8">@ViewData["Title"]</h1>
+        <div class="col-12 text-md-center my-0 auto col-md-4">
+            <a href="@Url.Action("RegistroCliente", "Usuario")" class="btn fondo1 text-white">
+                + Añadir cliente
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <!-- Búsqueda y filtros -->
+    <form asp-action="Clientes" method="get" class="bg-light border rounded">
+        <div class="form-group row d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center">
+            <!-- Cuadro de búsqueda -->
+            <div class="col-12 col-md-4 col-lg-4">
+                <input type="text" name="nombre" class="form-control" placeholder="🔍 Buscar nombre o email..." style="background-color: #EEE7DA;">
+            </div>
+            <div class="col-12 col-md-4 col-lg-4 my-2 my-md-auto">
+                <input type="number" name="monto" class="form-control" placeholder="💲Buscar por monto..." style="background-color: #EEE7DA;">
+            </div>
+            <!-- Botón de filtrar centrado -->
+            <div class="col-12 col-md-4 col-lg-4">
+                <button type="submit" class="text-white boton btn-block fondo1 rounded-3 w-100">Filtrar</button>
+            </div>
+        </div>
+    </form>
+    <!-- Tabla de usuarios -->
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="d-md-table-row-group">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Razón social</th>
+                    <th>RUT</th>
+                    <th>Dirección</th>
+                    <th>Distancia</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cliente in Model.Clientes)
+                {
+                    <tr class="main-row">
+
+                        <td>@cliente.Nombre @cliente.Apellido</td>
+                        <td>@cliente.Email</td>
+                        <td>@cliente.RazonSocial</td>
+                        <td>@cliente.RUT</td>
+                        <td>@cliente.Direccion.Ciudad, @cliente.Direccion.Calle @cliente.Direccion.NumeroPuerta</td>
+                        <td>@cliente.Distancia Km</td>
+                        <span class="text-danger">@ViewBag.Error</span>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+﻿@model RegistroClienteViewModel
+
+@{
+    Layout = "_LayoutUsuario";
+    ViewData["Title"] = "Registro de cliente";
+}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <form id="formCliente" asp-action="RegistroCliente" method="post" class="formulario col-lg-6 col-md-8 col-sm-10 h-75">
+            @Html.AntiForgeryToken()
+            <h3 class="my-3">Registrar cliente</h3>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label">Nombre</label>
+                <input asp-for="Nombre" class="form-control" placeholder="Pablo" required />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellido" class="control-label">Apellido</label>
+                <input asp-for="Apellido" class="form-control" placeholder="Suárez" required />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="ejemplo@ejemplo.com" required>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RazonSocial" class="control-label">Razón Social</label>
+                <input asp-for="RazonSocial" class="form-control" placeholder="Razón Social" required />
+                <span asp-validation-for="RazonSocial" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RUT" class="control-label">RUT</label>
+                <input asp-for="RUT" class="form-control" placeholder="RUT" required />
+                <span asp-validation-for="RUT" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Ciudad" class="control-label">Ciudad</label>
+                <input asp-for="Ciudad" class="form-control" placeholder="Ciudad" required />
+                <span asp-validation-for="Ciudad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Calle" class="control-label">Calle</label>
+                <input asp-for="Calle" class="form-control" placeholder="Calle" required />
+                <span asp-validation-for="Calle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="NumeroPuerta" class="control-label">Número de puerta</label>
+                <input asp-for="NumeroPuerta" type="number" class="form-control" placeholder="Número de puerta" required />
+                <span asp-validation-for="NumeroPuerta" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn-block boton fondo1 mt-4">Registrar</button>
+            </div>
+            <span class="text-danger">@ViewBag.Error</span>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        document.getElementById("formCliente").addEventListener("submit", function (event) {
+            var rutValue = document.getElementById("RUT").value;
+            if (rutValue.includes("e")) {
+                alert("El RUT no puede contener la letra 'e'.");
+                event.preventDefault();
+            }
+        });
+    </script>
+}

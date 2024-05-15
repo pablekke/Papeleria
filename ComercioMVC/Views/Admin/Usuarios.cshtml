@@ -1,0 +1,168 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+}
+@model ListarUsuariosViewModel
+
+@{
+    ViewData["Title"] = "Lista de Usuarios";
+    var mensajeExito = TempData["MensajeExito"] as string;
+    var mensajeEliminacionExitosa = TempData["EliminacionExitosa"] as string;
+}
+
+@if (!string.IsNullOrEmpty(mensajeExito) || !string.IsNullOrEmpty(mensajeEliminacionExitosa))
+{
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+        <div class="toast-header text-black" style="background-color: #a9cf93">
+            <strong class="mr-auto">Notificación</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            @if (!string.IsNullOrEmpty(mensajeExito))
+            {
+                @mensajeExito
+            }
+            else if (!string.IsNullOrEmpty(mensajeEliminacionExitosa))
+            {
+                @mensajeEliminacionExitosa
+            }
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.toast').toast('show');
+        });
+    </script>
+}
+
+
+<div class="container mt-3">
+    <h1>@ViewData["Title"]</h1>
+    <!-- Búsqueda y filtros -->
+    <form asp-action="Index" method="get" class="bg-light border rounded">
+        <div class="form-group row justify-content-sm-center justify-content-md-start justify-content-lg-center">
+            <!-- Cuadro de búsqueda que ocupa 5 columnas en md y 4 en lg -->
+            <div class="col-10 col-md-5 col-lg-4 mb-2 mb-md-0 ml-lg-0">
+                <input type="text" name="n" class="form-control" placeholder="🔍 Buscar nombre o email..." style="background-color: #ebc49f73;">
+            </div>
+            <!-- Contenedor para los radios, usando flex para alinear; ocupan 6 columnas en md y 4 en lg -->
+            <div class="col-10 justify-content-md-between justify-content-lg-center col-md-6 col-lg-4 my-auto d-md-flex ml-sm-3 ml-lg-0">
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="radioTodos" name="esAdmin" class="custom-control-input" value="" checked>
+                    <label class="custom-control-label" for="radioTodos">Todos</label>
+                </div>
+                <div class="custom-control custom-radio mx-md-3 mx-lg-1">
+                    <input type="radio" id="radioAdmins" name="esAdmin" class="custom-control-input" value="true">
+                    <label class="custom-control-label" for="radioAdmins">Admins</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="radioNoAdmins" name="esAdmin" class="custom-control-input" value="false">
+                    <label class="custom-control-label" for="radioNoAdmins">No Admins</label>
+                </div>
+            </div>
+            <!-- Botón de filtrar centrado y con un ancho del 50% en md, igual que el cuadro de texto en lg -->
+            <div class="col-10 col-md-5 col-lg-4 mt-lg-0 mt-sm-2 ml-lg-0">
+                <button type="submit" class="boton btn-block fondoMarron rounded-3" style="width: 100%;">Filtrar</button>
+            </div>
+        </div>
+    </form>
+    <!-- Tabla de usuarios -->
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="d-md-table-row-group">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Administrador</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var usuario in Model.Usuarios)
+                {
+                    <tr class="main-row">
+                        <td>@usuario.UsuarioId</td>
+                        <td>
+                            <div class="d-flex justify-content-between d-md-none">
+                                @usuario.Nombre @usuario.Apellido
+                                <button class="btn btn-sm btn-toggle" onclick="toggleDetails(this)">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <span class="d-none d-md-table-cell">@usuario.Nombre</span>
+                        </td>
+                        <td class="d-none d-md-table-cell">@usuario.Apellido</td>
+                        <td class="d-none d-md-table-cell">@usuario.Email</td>
+                        <td class="d-none d-md-table-cell">@(usuario.EsAdmin ? "✅" : "❌")</td>
+                        <td class="d-none d-md-table-cell">
+                            <a href="@Url.Action("Editar", new { id = usuario.UsuarioId })" class="btn btn-outline-success btn-sm" title="Editar">
+                                <i class="fa fa-pencil-alt"></i>
+                            </a>
+                            <a href="@Url.Action("Borrar", new { id = usuario.UsuarioId })" class="btn btn-outline-danger btn-sm" title="Eliminar" onclick="return confirm('¿Estás seguro de querer eliminar este usuario?');">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="details-row d-none">
+                        <td colspan="6">
+                            <div>Email: @usuario.Email</div>
+                            <div>Administrador: @(usuario.EsAdmin ? "✅" : "❌")</div>
+                            <div>
+                                Acciones:
+                                <a href="@Url.Action("Editar", new { id = usuario.UsuarioId })" class="btn btn-outline-success btn-sm" title="Editar">
+                                    <i class="fa fa-pencil-alt"></i>
+                                </a>
+                                <a href="@Url.Action("Borrar", new { id = usuario.UsuarioId })" class="btn btn-outline-danger btn-sm" title="Eliminar" onclick="return confirm('¿Estás seguro de querer eliminar este usuario?');">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                        <span class="text-danger">@ViewBag.Error</span>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    window.addEventListener('resize', function () {
+        updateTableHeader();
+        if (window.innerWidth >= 768) {
+            closeAllDetails();
+        }
+    });
+
+    function toggleDetails(button) {
+        const mainRow = button.closest('.main-row');
+        const detailsRow = mainRow.nextElementSibling;
+        if (detailsRow.classList.contains('details-row')) {
+            detailsRow.classList.toggle('d-none');
+            button.innerHTML = detailsRow.classList.contains('d-none') ? '<i class="fa fa-chevron-down"></i>' : '<i class="fa fa-chevron-up"></i>';
+        }
+    }
+
+    function closeAllDetails() {
+        document.querySelectorAll('.details-row').forEach(function (row) {
+            row.classList.add('d-none');
+        });
+        document.querySelectorAll('.btn-toggle').forEach(function (button) {
+            button.innerHTML = '<i class="fa fa-chevron-down"></i>';
+        });
+    }
+
+    function updateTableHeader() {
+        const thead = document.querySelector('thead');
+        if (window.innerWidth < 768) {
+            thead.classList.add('d-none');
+        } else {
+            thead.classList.remove('d-none');
+        }
+    }
+
+    // Call updateTableHeader on page load to set the initial state
+    document.addEventListener('DOMContentLoaded', updateTableHeader);
+</script>

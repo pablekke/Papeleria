@@ -1,0 +1,126 @@
+﻿@model PedidoComunViewModel
+
+@{
+    Layout = "_LayoutUsuario";
+    ViewData["Title"] = "Crear pedido común";
+    string FechaMin = Model.FechaEntregaPrometida.ToString("yyyy-MM-dd");
+}
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+        <form id="formCrearPedidoComun" asp-action="CrearPedidoComun" method="post">
+            <div class="row justify-content-between mt-5">
+                <!-- Columna para datos del cliente y artículo -->
+                <div class="cajaClienteFechaArticulo formulario col-lg-4 col-12">
+                    <h3 class="mt-2">@ViewData["Title"]</h3>
+                    <div class="fondoFechaCliente">
+                        <div class="form-group">
+                            <label asp-for="ClienteId" class="control-label">Cliente</label>
+                            <select asp-for="ClienteId" onchange='submitForm()' required>
+                                <option value="">Nombre - Razón social</option>
+                                @if (Model.Clientes != null)
+                                {
+                                    foreach (var cliente in Model.Clientes)
+                                    {
+                                        <option value="@cliente.ClienteId">@cliente.Nombre @cliente.Apellido - @cliente.RazonSocial</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="FechaEntregaPrometida" class="control-label">Fecha de entrega</label>
+                            <input asp-for="FechaEntregaPrometida" type="date" class="form-control" value="@FechaMin" min="@FechaMin" required />
+                        </div>
+                    </div>
+
+                    <div class="fondoCrearLinea">
+                        <div class="form-group">
+                            <label asp-for="ArticuloId" class="control-label">Artículo</label>
+                            <select asp-for="ArticuloId" required>
+                                <option value="">Nombre - $Precio +Stock</option>
+                                @if (Model.Articulos != null)
+                                {
+                                    foreach (var articulo in Model.Articulos)
+                                    {
+                                        <option value="@articulo.ArticuloId">@articulo.Nombre - $@articulo.Precio +@articulo.Stock </option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Cantidad">Cantidad</label>
+                            <input asp-for="Cantidad" type="number" min="1" value="1" class="form-control" required/>
+                        </div>
+                        <div>
+                            <button type="submit" name="accion" value="AñadirLinea" class="btn btn-block boton fondo4 mt-2">Agregar Línea</button>
+                            <span class="d-block text-danger text-center my-3">@ViewBag.ErrorLinea</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna para detalles del pedido -->
+                @if (Model.Lineas != null && Model.Lineas.Count > 0)
+                {
+                    <div class="col-lg-7 col-12 text-center formulario mt-sm-4 mt-lg-0">
+
+                        <h3 class="mt-2">Detalle del pedido</h3>
+                        <div class="cajaDetalle">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Artículo</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio</th>
+                                        <th>Subtotal</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < Model.Lineas.Count; i++)
+                                    {
+                                        <tr>
+                                            <td>@Model.Lineas[i].Articulo.Nombre</td>
+                                            <td>@Model.Lineas[i].Cantidad</td>
+                                            <td>@Model.Lineas[i].Articulo.Precio</td>
+                                            <td>@(Model.Lineas[i].Articulo.Precio * Model.Lineas[i].Cantidad)</td>
+                                            <td>
+                                                <button type="submit" name="accion" value="RemoverLinea" class="eliminarLinea text-danger">Eliminar</button>
+                                                <input type="hidden" name="indiceLinea" value="@i" />
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="total my-3">
+                            <span>Productos: $@Model.Total -</span>
+                            <span>Recargo: $@Model.Recargo -</span>
+                            <span><strong>Total: $@(Model.Recargo + Model.Total)</strong></span>
+                        </div>
+                        <div class="">
+                            <button type="submit" name="accion" value="CrearPedido" class="btn btn-block boton fondo1 w-75">Crear Pedido</button>
+                            <span class="d-block text-danger text-center my-3">@ViewBag.ErrorPedido</span>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center mt-5">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <h2 class="centrado-con-icono">¡AGREGA TU PRIMER ARTÍCULO! <i class="fas fa-shopping-cart"></i></h2>
+                        </div>
+                    </div>
+                }
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        function submitForm() {
+            document.querySelector('button[name="accion"]').value = "CambioCliente";
+            document.getElementById("formCrearPedidoComun").submit();
+        }
+    </script>
+}

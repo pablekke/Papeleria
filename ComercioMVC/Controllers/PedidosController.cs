@@ -1,0 +1,209 @@
+﻿using ComercioMVC.Models;
+using Dominio.DTOs;
+using Dominio.Modelos;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Servicios;
+
+namespace ComercioMVC.Controllers
+{
+    public class PedidosController : Controller
+    {
+        #region Constructor
+        private readonly IServicioCliente _servicioCliente;
+        private readonly IServicioArticulo _servicioArticulo;
+        private readonly IServicioPedido _servicioPedido;
+        private readonly IServicioPedidoExpres _servicioPedidoExpres;
+        private readonly IServicioPedidoComun _servicioPedidoComun;
+
+        public PedidosController(
+            IServicioCliente servicioCliente,
+            IServicioArticulo servicioArticulo,
+            IServicioPedido servicioPedido,
+            IServicioPedidoExpres servicioPedidoExpres,
+            IServicioPedidoComun servicioPedidoComun)
+        {
+           
+            _servicioCliente = servicioCliente;
+            _servicioPedido = servicioPedido;
+            _servicioArticulo = servicioArticulo;
+            _servicioPedidoExpres = servicioPedidoExpres;
+            _servicioPedidoComun = servicioPedidoComun;
+        }
+        private IActionResult? chequeoUsuarioValido()
+        {
+
+            int? id = HttpContext.Session.GetInt32("Id");
+            bool UsuarioEsAdmin = HttpContext.Session.GetString("EsAdmin") == "true";
+            if (id == null)
+            {
+                return RedirectToAction("Login", "Cuenta");
+            }
+            // Redirigir a los usuarios administradores a su panel de control
+            if (UsuarioEsAdmin)
+            {
+                return RedirectToAction("Usuarios", "Admin");
+            }
+            return null;
+        }
+        #endregion
+
+        #region Funciones para pedido
+
+        #region Pedidos en sesión
+        //lo guardo como string lo devuelvo como modelo
+        private PedidoComunViewModel GetPedidoDeSesion()
+        {
+            var objetoSerializado = HttpContext.Session.GetString("NuevoPedido") as string;
+            if (objetoSerializado != null)
+            {
+                PedidoComunViewModel modelo = JsonConvert.DeserializeObject<PedidoComunViewModel>(objetoSerializado);
+
+                return modelo; // Enviando el objeto como ViewModel a la vista
+            }
+            return null;
+        }
+        private void SetPedidoEnSesion(PedidoComunViewModel modelo)
+        {
+            string objetoSerializado = JsonConvert.SerializeObject(modelo);
+            HttpContext.Session.SetString("NuevoPedido", objetoSerializado);
+        }
+        #endregion
+
+        private void AñadirLinea(PedidoComunViewModel modelo, PedidoComunViewModel modeloSesion, ArticuloDTO articulo)
+        {
+            //actualiza el stock
+            LineaPedidoDTO? articuloEnLinea = modeloSesion.Lineas.FirstOrDefault(l => l.ArticuloId == articulo.ArticuloId);
+
+            if (articuloEnLinea != null)
+            {
+                int cantidadNueva = articuloEnLinea.Cantidad + modelo.Cantidad;
+
+                if (articulo.Stock > cantidadNueva)
+                {
+                    articuloEnLinea.Cantidad = cantidadNueva; // Actualiza la cantidad si no supera el stock
+                }
+                else if (articulo.Stock - articuloEnLinea.Cantidad == 0)
+                {
+                    ViewBag.ErrorLinea = $"Hay {articulo.Stock} en stock, has llegado al máximo.";
+                }
+                else
+                {
+                    int stockRestante = articulo.Stock - articuloEnLinea.Cantidad;
+                    ViewBag.ErrorLinea = $"No se puede añadir la cantidad deseada. Hay {articulo.Stock} en stock, solo podés añadir {stockRestante} más.";
+                }
+            }
+            //sino comprueba que haya stock y crea nueva linea
+            else
+            {
+                if (modelo.Cantidad <= articulo.Stock)
+                {
+                    modeloSesion.Lineas.Add(new LineaPedidoDTO
+                    {
+                        ArticuloId = modelo.ArticuloId,
+                        Cantidad = modelo.Cantidad,
+                        Articulo = articulo,
+                        PrecioUnitario = articulo.Precio
+                    });
+                }
+                else
+                {
+                    ViewBag.ErrorLinea = $"No hay suficiente stock para el artículo. Stock disponible: {articulo.Stock}.";
+                }
+            }
+        }
+        private void RemoverLinea(int? indice, PedidoComunViewModel modeloSesion)
+        {
+            if (indice.HasValue && indice.Value >= 0 && indice.Value < modeloSesion.Lineas.Count)
+            {
+                modeloSesion.Lineas.RemoveAt(indice.Value);
+            }
+        }
+        #endregion
+
+        [HttpGet]
+        public IActionResult CrearPedidoComun()
+        {
+            chequeoUsuarioValido();
+            var modelo = GetPedidoDeSesion();
+            if (modelo == null)
+            {
+                modelo = new PedidoComunViewModel
+                {
+                    Clientes = _servicioCliente.GetClientesPorString(""),
+                    Articulos = _servicioArticulo.GetArticulosFiltrados("", 0)
+                };
+            }
+
+            SetPedidoEnSesion(modelo); // Guardar en sesión en caso de ser nuevo
+            return View(modelo);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CrearPedidoComun(PedidoComunViewModel modelo, int? indiceLinea, string accion)
+        {
+            var modeloSesion = GetPedidoDeSesion();
+
+            var articulo = _servicioArticulo.GetArticuloPorId(modelo.ArticuloId);
+            var cliente = _servicioCliente.GetClientePorId(modelo.ClienteId);
+            
+           if (cliente != null)
+            {
+                modeloSesion.Cliente = cliente;
+                modeloSesion.ClienteId = modelo.ClienteId;
+
+                switch (accion)
+                {
+                    case "AñadirLinea":
+                        if (articulo != null)
+                            AñadirLinea(modelo, modeloSesion, articulo);
+                        else
+                            ViewBag.ErrorLinea = "Debes seleccionar un artículo";
+                        break;
+                    case "RemoverLinea":
+                        RemoverLinea(indiceLinea, modeloSesion);
+                        break;
+
+                    case "CrearPedido":
+                        if (modeloSesion.Lineas.Count == 0)
+                        {
+                            ViewBag.ErrorPedido = "Debes agregar al menos una línea.";
+                        }
+                        else
+                        {
+                            try
+                            {
+                                //elimino el cliente y los articulos despues de calcular el precio total
+                                var modeloDTO = modeloSesion.CrearDTO();
+                                modeloDTO.Total += modeloSesion.Recargo;
+                                modeloDTO.Cliente = null;
+                                foreach (var linea in modeloDTO.Lineas)
+                                {
+                                    linea.Articulo = null;
+                                }
+                                _servicioPedidoComun.Crear(modeloDTO);
+                                HttpContext.Session.Remove("NuevoPedido");
+                                return RedirectToAction("Clientes");
+                            }
+                            catch (Exception ex)
+                            {
+                                ViewBag.ErrorPedido = ex.Message;
+                                return View(modeloSesion);
+                            }
+                        }
+                        break;
+                }
+                modeloSesion.FechaEntregaPrometida = modelo.FechaEntregaPrometida;
+                modeloSesion.Total = Math.Round(modeloSesion.Lineas.Sum(l => l.Articulo.Precio * l.Cantidad), 2);
+                modeloSesion.Recargo = PedidoComun.CalcularRecargo(modeloSesion.Total, modeloSesion.Cliente.Distancia);
+                SetPedidoEnSesion(modeloSesion);
+            }
+            else
+            {
+                ViewBag.ErrorLinea = "Debes seleccionar un cliente.";
+            }
+            return View(modeloSesion);
+        }
+    }
+}

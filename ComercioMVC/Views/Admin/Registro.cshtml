@@ -1,0 +1,55 @@
+﻿@model RegistroViewModel
+
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["Title"] = "Registro";
+}
+<div class="container pt-3">
+    <div class="row justify-content-center align-items-center" style="">
+        <form asp-action="Registro" method="post" class="formulario col-lg-6 col-md-8 col-sm-10 p-4">
+            @Html.AntiForgeryToken()
+            <h3 class="mb-3">Registrar usuario</h3> 
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" placeholder="Pablo" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellido" class="control-label"></label>
+                <input asp-for="Apellido" class="form-control" placeholder="Suárez" />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" type="email" class="form-control" id="Email" placeholder="ejemplo@ejemplo.com" required>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-2">
+                <label asp-for="Contraseña">Contraseña</label>
+                <input asp-for="Contraseña" type="password" class="form-control" id="Contraseña" name="Contraseña" placeholder="*******" required>
+                <span asp-validation-for="Contraseña" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ConfirmarContraseña" class="control-label">Confirmar contraseña</label>
+                <input asp-for="ConfirmarContraseña" class="form-control" placeholder="*******" />
+                <span asp-validation-for="ConfirmarContraseña" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="switch">
+                    Es administrador
+                    <input type="checkbox" asp-for="EsAdmin" class="admin-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn-block boton fondoVerde mt-4">Registrar</button>
+            </div>
+            <span class="text-danger">@ViewBag.Error</span>
+        </form>
+    </div>
+</div>

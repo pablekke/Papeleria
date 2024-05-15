@@ -1,0 +1,77 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|c:\\users\\pableke\\desktop\\obigatorio010524\\papeleria\\dominio\\modelos\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|solutionrelative:dominio\\modelos\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|c:\\users\\pableke\\desktop\\obigatorio010524\\papeleria\\dominio\\utiles\\utiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|solutionrelative:dominio\\utiles\\utiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|c:\\users\\pableke\\desktop\\obigatorio010524\\papeleria\\dominio\\modelos\\pedidocomun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|solutionrelative:dominio\\modelos\\pedidocomun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 892,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Utiles.cs",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\Dominio\\Utiles\\Utiles.cs",
+              "RelativeDocumentMoniker": "Dominio\\Utiles\\Utiles.cs",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\Dominio\\Utiles\\Utiles.cs",
+              "RelativeToolTip": "Dominio\\Utiles\\Utiles.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-15T20:35:04.845Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\Dominio\\Modelos\\Usuario.cs",
+              "RelativeDocumentMoniker": "Dominio\\Modelos\\Usuario.cs",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\Dominio\\Modelos\\Usuario.cs",
+              "RelativeToolTip": "Dominio\\Modelos\\Usuario.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAuwCUAAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-15T20:31:39.171Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PedidoComun.cs",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\Dominio\\Modelos\\PedidoComun.cs",
+              "RelativeDocumentMoniker": "Dominio\\Modelos\\PedidoComun.cs",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\Dominio\\Modelos\\PedidoComun.cs",
+              "RelativeToolTip": "Dominio\\Modelos\\PedidoComun.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-15T18:42:18.06Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
