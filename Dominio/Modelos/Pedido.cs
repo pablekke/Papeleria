@@ -18,6 +18,8 @@ namespace Dominio.Modelos
         #region Metodos
         public static void ActualizarIVA(double iva)
         {
+            iva /= 100;
+            iva = Math.Round(iva,2);
             Utiles.ExcepcionPorcentajeInvalido(iva);
             IVA = iva;
         }

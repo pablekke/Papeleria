@@ -13,6 +13,8 @@ namespace ComercioMVC.Models
 
         [Required(ErrorMessage = "La fecha de entrega es obligatoria.")]
         [DataType(DataType.Date)]
+
+        public int DiasMinimos = PedidoComun.DiasMinimosEntrega;
         public DateTime FechaEntregaPrometida { get; set; } = DateTime.Now.Date.AddDays(PedidoComun.DiasMinimosEntrega + 1);
         public List<LineaPedidoDTO> Lineas { get; set; } = new List<LineaPedidoDTO>();
 

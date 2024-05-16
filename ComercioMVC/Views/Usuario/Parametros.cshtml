@@ -1,0 +1,76 @@
+﻿@model ParametrosViewModel
+@{
+    Layout = "_LayoutUsuario";
+    ViewData["Title"] = "Modificar parámetros";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <form id="formCliente" asp-action="ActualizarParametros" method="post" class="formulario m-3">
+                <h3 class="text-center mb-4">Actualizar Parámetros</h3>
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- IVA -->
+                <div class="form-group">
+                    <label asp-for="IVA" class="control-label">IVA (%)</label>
+                    <input type="number" asp-for="IVA" placeholder="Ingrese el nuevo valor del IVA" class="form-control" required />
+                    <span asp-validation-for="IVA" class="text-danger"></span>
+                    <p class="text-muted">Valor actual del IVA: <strong>@Model.IVA%</strong></p>
+                </div>
+                <div class="fondoGrisClaro">
+                    <!-- Recargo -->
+                    <div class="form-group">
+                        <label asp-for="Recargo" class="control-label">Recargo (%)</label>
+                        <input type="number" asp-for="Recargo" placeholder="Ingrese el nuevo valor del Recargo" class="form-control" required />
+                        <span asp-validation-for="Recargo" class="text-danger"></span>
+                        <p class="text-muted">Valor actual del Recargo: <strong>@Model.Recargo%</strong></p>
+                    </div>
+
+                    <!-- Distancia Máxima Km -->
+                    <div class="form-group">
+                        <label asp-for="DistanciaMaximaKm" class="control-label">Distancia Máxima (Km)</label>
+                        <input type="number" asp-for="DistanciaMaximaKm" placeholder="Ingrese la nueva Distancia Máxima (Km)" class="form-control" required />
+                        <span asp-validation-for="DistanciaMaximaKm" class="text-danger"></span>
+                        <p class="text-muted">Valor actual de la Distancia Máxima: <strong>@Model.DistanciaMaximaKm Km</strong></p>
+                    </div>
+
+                    <!-- Días Mínimos Entrega -->
+                    <div class="form-group">
+                        <label asp-for="DiasMinimosEntrega" class="control-label">Días Mínimos de Entrega</label>
+                        <input type="number" asp-for="DiasMinimosEntrega" placeholder="Ingrese el nuevo valor de los Días Mínimos de Entrega" class="form-control" required />
+                        <span asp-validation-for="DiasMinimosEntrega" class="text-danger"></span>
+                        <p class="text-muted">Valor actual de los Días Mínimos de Entrega: <strong>@Model.DiasMinimosEntrega días</strong></p>
+                    </div>
+                </div>
+                <!-- Recargo Base -->
+                <div class="form-group">
+                    <label asp-for="RecargoBase" class="control-label">Recargo Base (%)</label>
+                    <input type="number" asp-for="RecargoBase" placeholder="Ingrese el nuevo valor del Recargo Base" class="form-control" required />
+                    <span asp-validation-for="RecargoBase" class="text-danger"></span>
+                    <p class="text-muted">Valor actual del Recargo Base: <strong>@Model.RecargoBase%</strong></p>
+                </div>
+                <!-- Recargo Mismo Día -->
+                <div class="form-group">
+                    <label asp-for="RecargoMismoDia" class="control-label">Recargo Mismo Día (%)</label>
+                    <input type="number" asp-for="RecargoMismoDia" placeholder="Ingrese el nuevo valor del Recargo Mismo Día" class="form-control" required />
+                    <span asp-validation-for="RecargoMismoDia" class="text-danger"></span>
+                    <p class="text-muted">Valor actual del Recargo Mismo Día: <strong>@Model.RecargoMismoDia%</strong></p>
+                </div>
+
+                <!-- Plazo Entrega Máximo -->
+                <div class="form-group">
+                    <label asp-for="PlazoEntregaMaximo" class="control-label">Plazo de Entrega Máximo (días)</label>
+                    <input type="number" asp-for="PlazoEntregaMaximo" placeholder="Ingrese el nuevo valor del Plazo de Entrega Máximo" class="form-control" required />
+                    <span asp-validation-for="PlazoEntregaMaximo" class="text-danger"></span>
+                    <p class="text-muted">Valor actual del Plazo de Entrega Máximo: <strong>@Model.PlazoEntregaMaximo días</strong></p>
+                </div>
+
+                <button type="submit" class="btn btn-block boton fondo4 mb-3">Actualizar</button>
+                <span class="text-danger">@ViewBag.Error</span>
+            </form>
+        </div>
+    </div>
+</div>
+

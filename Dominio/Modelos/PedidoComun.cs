@@ -35,9 +35,11 @@ namespace Dominio.Modelos
 
         public static void ActualizarRecargo(double recargo)
 		{
+			recargo /= 100;
+			recargo = Math.Round(recargo, 2);
 			Utiles.ExcepcionPorcentajeInvalido(recargo);
 			Recargo = recargo;
-		}
+		}	
 
 		public static void ActualizarDistanciaMaximaKm(double distancia)
 		{

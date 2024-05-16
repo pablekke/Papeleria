@@ -1,5 +1,6 @@
 ﻿using ComercioMVC.Models;
 using Dominio.DTOs;
+using Dominio.Modelos;
 using Microsoft.AspNetCore.Mvc;
 using Servicios;
 
@@ -30,8 +31,9 @@ namespace ComercioMVC.Controllers
             _servicioPedidoExpres = servicioPedidoExpres;
             _servicioPedidoComun = servicioPedidoComun;
         }
-        private IActionResult? chequeoUsuarioValido() { 
-        
+        private IActionResult? chequeoUsuarioValido()
+        {
+
             int? id = HttpContext.Session.GetInt32("Id");
             bool UsuarioEsAdmin = HttpContext.Session.GetString("EsAdmin") == "true";
             if (id == null)
@@ -45,6 +47,41 @@ namespace ComercioMVC.Controllers
             }
             return null;
         }
+        #endregion
+
+        #region Modificar parámetros 
+        [HttpGet]
+        public IActionResult Parametros()
+        {
+            return View(new ParametrosViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ActualizarParametros(ParametrosViewModel modelo)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Actualizar parámetros según los valores ingresados en el modelo
+                    Pedido.ActualizarIVA(modelo.IVA);
+                    PedidoComun.ActualizarRecargo(modelo.Recargo) ;
+                    PedidoComun.ActualizarDistanciaMaximaKm(modelo.DistanciaMaximaKm);
+                    PedidoComun.ActualizarDiasMinimosEntrega(modelo.DiasMinimosEntrega);
+                    PedidoExpres.ActualizarRecargoBase(modelo.RecargoBase);
+                    PedidoExpres.ActualizarRecargoMismoDia(modelo.RecargoMismoDia);
+                    PedidoExpres.ActualizarPlazoEntregaMaximo(modelo.PlazoEntregaMaximo);
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Error = ex.Message;
+                }
+            }
+            return View("Parametros", modelo);
+        }
+
+
         #endregion
 
         #region Clientes
@@ -75,7 +112,7 @@ namespace ComercioMVC.Controllers
         }
 
         //crear cliente
-        
+
         public IActionResult RegistroCliente()
         {
             chequeoUsuarioValido();
@@ -98,7 +135,8 @@ namespace ComercioMVC.Controllers
             return View(formulario);
         }
 
-        public IActionResult EliminarCliente(int id) {
+        public IActionResult EliminarCliente(int id)
+        {
             chequeoUsuarioValido();
             try
             {

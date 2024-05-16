@@ -74,6 +74,7 @@ namespace ComercioMVC.Controllers
         }
 
         #endregion
+
         #region Pedidos anulados
         public IActionResult Anulados()
         {
@@ -159,6 +160,13 @@ namespace ComercioMVC.Controllers
                 modeloSesion.Lineas.RemoveAt(indice.Value);
             }
         }
+        private void ActualizarInformacionEnSesion(PedidoComunViewModel modelo) {
+            double total = modelo.Lineas.Sum(l => l.Articulo.Precio * l.Cantidad);
+            double recargo = PedidoComun.CalcularRecargo(total, modelo.Cliente.Distancia);
+            modelo.Total = Math.Round(total, 2);
+            modelo.Recargo = Math.Round(recargo, 2);
+            SetPedidoComunEnSesion(modelo);
+        }
         #endregion
 
         [HttpGet]
@@ -166,16 +174,21 @@ namespace ComercioMVC.Controllers
         {
             chequeoUsuarioValido();
             var modelo = GetPedidoComunDeSesion();
-            if (modelo == null)
-            {
+            if (modelo == null) { 
                 modelo = new PedidoComunViewModel
                 {
                     Clientes = _servicioCliente.GetClientesPorString(""),
                     Articulos = _servicioArticulo.GetArticulosFiltrados("", 0)
                 };
+                SetPedidoComunEnSesion(modelo);
             }
-
-            SetPedidoComunEnSesion(modelo); // Guardar en sesión en caso de ser nuevo
+            else if (modelo.Lineas.Count > 0){ 
+                ActualizarInformacionEnSesion(modelo);
+            }
+            if (modelo.DiasMinimos != PedidoComun.DiasMinimosEntrega)
+            {
+                modelo.DiasMinimos = PedidoComun.DiasMinimosEntrega;
+            }
             return View(modelo);
         }
 
@@ -234,9 +247,7 @@ namespace ComercioMVC.Controllers
                         }
                         break;
                 }
-                modeloSesion.FechaEntregaPrometida = modelo.FechaEntregaPrometida;
-                modeloSesion.Total = Math.Round(modeloSesion.Lineas.Sum(l => l.Articulo.Precio * l.Cantidad), 2);
-                modeloSesion.Recargo = PedidoComun.CalcularRecargo(modeloSesion.Total, modeloSesion.Cliente.Distancia);
+                ActualizarInformacionEnSesion(modeloSesion);
                 SetPedidoComunEnSesion(modeloSesion);
             }
             else

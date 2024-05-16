@@ -85,7 +85,6 @@ namespace Dominio
         }
         public static void ExcepcionPorcentajeInvalido(double porc)
         {
-            porc /= 100;
             if (porc < 0 || porc > 1)
             {
                 throw new ExcepcionElementoInvalido("Porcentaje inválido");

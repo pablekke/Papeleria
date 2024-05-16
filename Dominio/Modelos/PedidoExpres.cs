@@ -50,12 +50,16 @@ namespace Dominio.Modelos
 
         public static void ActualizarRecargoBase(double recargo)
         {
+            recargo /= 100;
+            recargo = Math.Round(recargo, 2);
             Utiles.ExcepcionPorcentajeInvalido(recargo);
             RecargoBase = recargo;
         }
 
         public static void ActualizarRecargoMismoDia(double recargo)
         {
+            recargo /= 100;
+            recargo = Math.Round(recargo, 2);
             Utiles.ExcepcionPorcentajeInvalido(recargo);
             RecargoMismoDia = recargo;
         }

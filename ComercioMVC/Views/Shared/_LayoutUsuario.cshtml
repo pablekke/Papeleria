@@ -25,37 +25,51 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-black" asp-area="" asp-controller="Pedidos" asp-action="Pendientes">Pendientes</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Listar
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li class="nav-item">
+                                    <a class="nav-link text-black" asp-area="" asp-controller="Pedidos" asp-action="Pendientes">Pendientes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-black" asp-area="" asp-controller="Pedidos" asp-action="Anulados">Anulados</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-black" asp-area="" asp-controller="Usuario" asp-action="Clientes">Clientes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-black" asp-area="" asp-controller="Usuario" asp-action="Articulos">Articulos</a>
+                                </li>
+                            </ul>
+                        </li>
+                       
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-black" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Crear pedido
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Pedidos" asp-action="CrearPedidoComun">Común</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Pedidos" asp-action="CrearPedidoExpres">Exprés</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-black" asp-area="" asp-controller="Pedidos" asp-action="Anulados">Anulados</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-black" asp-area="" asp-controller="Usuario" asp-action="Clientes">Clientes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-black" asp-area="" asp-controller="Usuario" asp-action="Articulos">Articulos</a>
+                            <a class="nav-link text-black" asp-area="" asp-controller="Usuario" asp-action="Parametros">Parámetros</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav flex-grow-1 justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link text-black" asp-area="" asp-controller="Pedidos" asp-action="CrearPedidoComun">+ Pedido común</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-black" asp-area="" asp-controller="Pedidos" asp-action="CrearPedidoExpres">+ Pedido exprés</a>
-                        </li>
                         @if (Context.Session.GetInt32("Id") != null)
                         {
-                        <li class="nav-item">
-                            <a class="nav-link text-black" asp-area="" asp-controller="Cuenta" asp-action="Logout">Salir</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-black" asp-area="" asp-controller="Cuenta" asp-action="Logout">Salir</a>
+                            </li>
                         }
                     </ul>
                 </div>
-
             </div>
         </nav>
+
     </header>
     <div class="container-fluid">
         <main role="main" class="pb-3">

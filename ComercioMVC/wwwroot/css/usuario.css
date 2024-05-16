@@ -21,7 +21,10 @@ html {
 a {
     text-decoration: none;
 }
-
+.fondoGrisClaro {
+    background-color:#f8d9a717s;
+    border-radius: 10px;
+}
 .boton {
     width: 100%;
     height: 50px;

@@ -3,7 +3,7 @@
 @{
     Layout = "_LayoutUsuario";
     ViewData["Title"] = "Crear pedido común";
-    string FechaMin = Model.FechaEntregaPrometida.ToString("yyyy-MM-dd");
+    string FechaMin = DateTime.Now.Date.AddDays(Model.DiasMinimos + 1).ToString("yyyy-MM-dd");
 }
 
 <div class="container-fluid">
@@ -37,7 +37,7 @@
                     <div class="fondoCrearLinea">
                         <div class="form-group">
                             <label asp-for="ArticuloId" class="control-label">Artículo</label>
-                            <select asp-for="ArticuloId" required>
+                            <select asp-for="ArticuloId">
                                 <option value="">Nombre - $Precio +Stock</option>
                                 @if (Model.Articulos != null)
                                 {
@@ -96,7 +96,7 @@
                         <div class="total my-3">
                             <span>Productos: $@Model.Total -</span>
                             <span>Recargo: $@Model.Recargo -</span>
-                            <span><strong>Total: $@(Model.Recargo + Model.Total)</strong></span>
+                            <span><strong>Total: $@Math.Round((Model.Recargo + Model.Total)),2</strong></span>
                         </div>
                         <div class="">
                             <button type="submit" name="accion" value="CrearPedido" class="btn btn-block boton fondo1 w-75">Crear Pedido</button>
