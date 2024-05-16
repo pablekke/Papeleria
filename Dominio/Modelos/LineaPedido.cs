@@ -11,11 +11,6 @@ namespace Dominio.Modelos
         public int Cantidad { get; set; }
         public double PrecioUnitario { get; set; }
 
-        public double Subtotal()
-        {
-            return Cantidad * PrecioUnitario;
-        }
-
         public void Copiar(LineaPedido lp)
         {
             LineaPedidoId = lp.LineaPedidoId;
@@ -24,7 +19,6 @@ namespace Dominio.Modelos
             Cantidad = lp.Cantidad;
             PrecioUnitario = lp.PrecioUnitario;
         }
-
         public void Validar()
         {
             Utiles.ExcepcionSiNumeroNegativo(Cantidad, "Cantidad inválida");

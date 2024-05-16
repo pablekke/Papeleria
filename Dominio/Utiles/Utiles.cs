@@ -1,16 +1,10 @@
 ﻿using Dominio.Excepciones;
 using System.Text.RegularExpressions;
+
 namespace Dominio
 {
     internal class Utiles
     {
-        public static void ExcepcionSiElementoNulo(Object o, string message)
-        {
-            if (o == null)
-            {
-                throw new ExcepcionElementoInvalido(message);
-            }
-        }
         public static void ExcepcionSiStringVacio(string s, string message)
         {
             if (String.IsNullOrEmpty(s))
@@ -28,13 +22,6 @@ namespace Dominio
         public static void ExcepcionSiNumeroNegativo(double number, string message)
         {
             if (number < 0)
-            {
-                throw new ExcepcionElementoInvalido(message);
-            }
-        }
-        public static void ExcepcionSiCero(int number, string message)
-        {
-            if (number == 0)
             {
                 throw new ExcepcionElementoInvalido(message);
             }
@@ -58,7 +45,6 @@ namespace Dominio
             string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, pattern);
         }
-
         public static void ValidarContraseña(string contraseña)
         {
             // Verificar la longitud mínima de 6 caracteres
@@ -73,14 +59,6 @@ namespace Dominio
             if (!Regex.IsMatch(contraseña, patron))
             {
                 throw new ExcepcionElementoInvalido("La contraseña no cumple con los requisitos mínimos.");
-            }
-        }
-
-        public static void ExcepcionSiListaVacia<T>(IEnumerable<T> lista, string mensaje)
-        {
-            if (!lista.Any())
-            {
-                throw new ExcepcionElementoInvalido(mensaje);
             }
         }
         public static void ExcepcionPorcentajeInvalido(double porc)

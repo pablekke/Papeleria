@@ -33,7 +33,7 @@
   {
     "ContainingType": "WebAPI.Controllers.ArticulosController",
     "Method": "GetById",
-    "RelativePath": "Articulos",
+    "RelativePath": "Articulos/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -41,7 +41,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

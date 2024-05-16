@@ -10,20 +10,6 @@ namespace Dominio.Modelos
 		public static int DiasMinimosEntrega { get; set; } = 7;
        
 		#region Métodos
-        public static double CalcularRecargo(double subtotal, double distancia)
-		{
-			if (distancia > PedidoComun.DistanciaMaximaKm)
-			{
-				var total = subtotal * Recargo;
-				return Math.Round(total, 2);
-			}
-			return 0;
-		}
-		public static double CalcularTotal(double totalSinIVA, double distancia)
-        {
-            return TotalMasIVASinRecargo(totalSinIVA) + CalcularRecargo(totalSinIVA, distancia);
-        }
-		
 		public override void ValidarFechaEntregaPrometida(DateTime fecha) {
             int diasDiferencia = (fecha.Date - DateTime.Now.Date).Days;
             // Verifica si la fecha prometida es hoy o en el pasado, o si es menor en días a la cantidad mínima de 7 días futuros
@@ -40,18 +26,29 @@ namespace Dominio.Modelos
 			Utiles.ExcepcionPorcentajeInvalido(recargo);
 			Recargo = recargo;
 		}	
-
 		public static void ActualizarDistanciaMaximaKm(double distancia)
 		{
 			Utiles.ExcepcionSiNumeroNegativo(distancia, "Distancia inválida");
 			DistanciaMaximaKm = distancia;
 		}
-
 		public static void ActualizarDiasMinimosEntrega(int dias)
 		{
 			Utiles.ExcepcionSiNumeroNegativo(dias, "Cantidad de días inválida");
 			DiasMinimosEntrega = dias;
 		}
+        public static double CalcularRecargo(double subtotal, double distancia)
+		{
+			if (distancia > PedidoComun.DistanciaMaximaKm)
+			{
+				var total = subtotal * Recargo;
+				return Math.Round(total, 2);
+			}
+			return 0;
+		}
+		public static double CalcularTotal(double totalSinIVA, double distancia)
+        {
+            return TotalMasIVASinRecargo(totalSinIVA) + CalcularRecargo(totalSinIVA, distancia);
+        }
 
 		public void Copiar(PedidoComun pedido)
 		{

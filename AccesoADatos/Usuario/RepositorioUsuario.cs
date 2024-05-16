@@ -1,6 +1,5 @@
 ﻿using Dominio.Modelos;
 using Microsoft.EntityFrameworkCore;
-using BCrypt.Net;
 
 namespace AccesoADatos
 {

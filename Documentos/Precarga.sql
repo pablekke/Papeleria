@@ -13,10 +13,13 @@ SELECT * FROM LineasPedido;
 --Precarga de Usuarios
 INSERT INTO Usuarios (EsAdmin, Nombre, Apellido, Email, Contraseña, ContraseñaHasheada)
 VALUES
-(0, 'Diego', 'González', 'diego.gonzalez@gmail.com', '123', '$2a$10$flLk6IILS3/JAaGoRwVJquKHIWI3xlBG3MQx7Cj39U7MuGGSnQeki'),
-(1, 'Lucía', 'Pérez', 'lucia.perez@gmail.com', '123', '$2a$10$flLk6IILS3/JAaGoRwVJquKHIWI3xlBG3MQx7Cj39U7MuGGSnQeki'),
-(0, 'Javier', 'Martínez', 'javier.martinez@gmail.com', '123', '$2a$10$flLk6IILS3/JAaGoRwVJquKHIWI3xlBG3MQx7Cj39U7MuGGSnQeki'),
-(1, 'Sofía', 'López', 'sofia.lopez@gmail.com', '123', '$2a$10$flLk6IILS3/JAaGoRwVJquKHIWI3xlBG3MQx7Cj39U7MuGGSnQeki')
+(0,	'usuario',	'usuario',	'usuario@usuario.com',	'Usuario1.',	'$2a$10$0gpenNLlC0gDA65b3BAnpu1ve9GYxmFcn.PSgawZJfPAAbnJXMKqu'),
+(1,	'admin',	'admin',	'admin@admin.com',	'Admin1.',	'$2a$10$VUJtzyUyIUCeJKKkEyuT5OW32ApfZiSQ0.zA9GZcE0CGR4WRabVra'),
+(0, 'Diego', 'González', 'diego.gonzalez@gmail.com', 'Usuario1.', '$2a$10$0gpenNLlC0gDA65b3BAnpu1ve9GYxmFcn.PSgawZJfPAAbnJXMKqu'),
+(1, 'Lucía', 'Pérez', 'lucia.perez@gmail.com', 'Admin1.', '$2a$10$VUJtzyUyIUCeJKKkEyuT5OW32ApfZiSQ0.zA9GZcE0CGR4WRabVra'),
+(0, 'Javier', 'Martínez', 'javier.martinez@gmail.com', 'Usuario1.', '$2a$10$0gpenNLlC0gDA65b3BAnpu1ve9GYxmFcn.PSgawZJfPAAbnJXMKqu'),
+(1, 'Sofía', 'López', 'sofia.lopez@gmail.com', 'Admin1.', '$2a$10$VUJtzyUyIUCeJKKkEyuT5OW32ApfZiSQ0.zA9GZcE0CGR4WRabVra')
+
 
 --Precarga de Clientes
 INSERT INTO Clientes (Nombre, Apellido, Email, RazonSocial, RUT, Ciudad, Calle, NumeroPuerta, Distancia)

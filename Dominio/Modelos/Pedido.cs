@@ -23,18 +23,17 @@ namespace Dominio.Modelos
             Utiles.ExcepcionPorcentajeInvalido(iva);
             IVA = iva;
         }
-        public abstract void ValidarFechaEntregaPrometida(DateTime fecha);
         public static double TotalMasIVASinRecargo(double total)
         {
             return Math.Round(total * (1 + IVA), 2);
         }
+        public abstract void ValidarFechaEntregaPrometida(DateTime fecha);
 
         public virtual void Validar()
         {
             Utiles.ExcepcionSiFechaFutura(FechaEmision, "Fecha incorrecta");
             ValidarFechaEntregaPrometida(FechaEntregaPrometida);
         }
-
         public void Copiar(Pedido pedido)
         {
             PedidoId = pedido.PedidoId;

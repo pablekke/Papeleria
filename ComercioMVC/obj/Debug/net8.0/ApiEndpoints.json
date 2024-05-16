@@ -1,15 +1,5 @@
 [
   {
-    "ContainingType": "WebAPI.Controllers.PedidosController",
-    "Method": "GetPedidosAnulados",
-    "RelativePath": "api/Pedidos",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "WebAPI.Controllers.ArticulosController",
     "Method": "Get",
     "RelativePath": "Articulos",

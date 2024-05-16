@@ -9,4 +9,3 @@ namespace AccesoADatos
         IEnumerable<Usuario> GetUsuarioPorString(string texto);
     }
 }
-  

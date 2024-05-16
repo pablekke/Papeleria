@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Servicios;
 
 namespace WebAPI.Controllers
@@ -18,16 +17,8 @@ namespace WebAPI.Controllers
         [HttpGet]
         public IActionResult GetPedidosAnulados()
         {
-            try
-            {
-                var pedidosAnulados = _servicioPedido.GetPedidosAnulados();
-                return Ok(pedidosAnulados);
-            }
-            catch (Exception ex)
-            {
-                // Log the exception details here
-                return StatusCode(500, "Por favor, intentá más tarde.");
-            }
+            var pedidosAnulados = _servicioPedido.GetPedidosAnulados();
+            return Ok(pedidosAnulados);
         }
     }
 }

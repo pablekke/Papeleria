@@ -51,7 +51,6 @@ namespace ComercioMVC
             });
             #endregion
 
-
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddHttpClient();

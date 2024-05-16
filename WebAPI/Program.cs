@@ -28,7 +28,6 @@ namespace WebAPI
             #endregion
 
             // Add services to the container.
-
             builder.Services.AddControllers();
             builder.Services.AddHttpClient();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -45,10 +44,7 @@ namespace WebAPI
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();

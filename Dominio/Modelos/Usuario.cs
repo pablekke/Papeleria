@@ -1,7 +1,5 @@
-﻿using Dominio.Excepciones;
-using Dominio.Interfaces;
+﻿using Dominio.Interfaces;
 using System.Text.RegularExpressions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Dominio.Modelos
 {
@@ -24,7 +22,6 @@ namespace Dominio.Modelos
             Email = usuario.Email;
             ContraseñaHasheada = usuario.ContraseñaHasheada;
         }
-
         public void Validar()
         {
             ValidarNombreYApellido(Nombre, Apellido);

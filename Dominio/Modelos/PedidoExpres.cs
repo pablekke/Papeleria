@@ -11,21 +11,6 @@ namespace Dominio.Modelos
         public static int PlazoEntregaMaximo { get; set; } = 5;
         
         #region Métodos
-        public static double CalcularRecargo(double subtotal, bool seEntregaElMismoDia)
-        {
-            var ret = subtotal;
-            if (seEntregaElMismoDia)
-                ret *= PedidoExpres.RecargoMismoDia;
-            else
-                ret *= PedidoExpres.RecargoBase;
-            return Math.Round(ret, 2);
-        }
-
-        public static double CalcularTotal(double subtotal, bool seEntregaElMismoDia)
-        {
-            return TotalMasIVASinRecargo(subtotal) + CalcularRecargo(subtotal, seEntregaElMismoDia);
-        }
-
         public override void ValidarFechaEntregaPrometida(DateTime fecha) {
             int diasDiferencia = (fecha.Date - DateTime.Now.Date).Days;
 
@@ -47,7 +32,15 @@ namespace Dominio.Modelos
                 throw new ExcepcionElementoInvalido($"Fecha inválida: La fecha de entrega no debe exceder los {PlazoEntregaMaximo} días desde hoy.");
             }
         }
-
+        public static double CalcularRecargo(double subtotal, bool seEntregaElMismoDia)
+        {
+            var ret = subtotal;
+            if (seEntregaElMismoDia)
+                ret *= PedidoExpres.RecargoMismoDia;
+            else
+                ret *= PedidoExpres.RecargoBase;
+            return Math.Round(ret, 2);
+        }
         public static void ActualizarRecargoBase(double recargo)
         {
             recargo /= 100;
@@ -55,7 +48,6 @@ namespace Dominio.Modelos
             Utiles.ExcepcionPorcentajeInvalido(recargo);
             RecargoBase = recargo;
         }
-
         public static void ActualizarRecargoMismoDia(double recargo)
         {
             recargo /= 100;
@@ -63,7 +55,6 @@ namespace Dominio.Modelos
             Utiles.ExcepcionPorcentajeInvalido(recargo);
             RecargoMismoDia = recargo;
         }
-
         public static void ActualizarPlazoEntregaMaximo(int dias)
         {
             Utiles.ExcepcionSiNumeroNegativo(dias, "Plazo inválido");

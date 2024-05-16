@@ -19,8 +19,9 @@ namespace WebAPI.Controllers
         {
             return Ok(_servicioArticulo.GetArticulosFiltrados(nombre, monto));
         }
-        [HttpGet]
-        public IActionResult GetById([FromQuery] int id)
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
         {
             return Ok(_servicioArticulo.GetArticuloPorId(id));
         }

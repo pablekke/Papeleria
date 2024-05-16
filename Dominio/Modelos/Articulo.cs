@@ -5,7 +5,6 @@ namespace Dominio.Modelos
 {
     public class Articulo: IValidable, ICopiable<Articulo>
     {
-
         public int ArticuloId { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }

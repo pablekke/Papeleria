@@ -3,28 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\comerciomvc\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|solutionrelative:comerciomvc\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{34C9F7DA-0BE0-45A7-B7FB-9887B6D272C7}|WebAPI\\WebAPI.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\webapi\\pedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34C9F7DA-0BE0-45A7-B7FB-9887B6D272C7}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\pedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\comerciomvc\\models\\pedidos\\pedidocomun\\crearpedidocomunviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|solutionrelative:comerciomvc\\models\\pedidos\\pedidocomun\\crearpedidocomunviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\dominio\\modelos\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|solutionrelative:dominio\\modelos\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\comerciomvc\\views\\pedidos\\crearpedidocomun.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|solutionrelative:comerciomvc\\views\\pedidos\\crearpedidocomun.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\dominio\\modelos\\pedidocomun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|solutionrelative:dominio\\modelos\\pedidocomun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\comerciomvc\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|solutionrelative:comerciomvc\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{34C9F7DA-0BE0-45A7-B7FB-9887B6D272C7}|WebAPI\\WebAPI.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\webapi\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34C9F7DA-0BE0-45A7-B7FB-9887B6D272C7}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,80 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PedidosController.cs",
-              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Controllers\\PedidosController.cs",
-              "RelativeDocumentMoniker": "ComercioMVC\\Controllers\\PedidosController.cs",
-              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Controllers\\PedidosController.cs",
-              "RelativeToolTip": "ComercioMVC\\Controllers\\PedidosController.cs",
-              "ViewState": "AQIAAHEAAAAAAAAAAMBAwKYAAAAMAAAA",
+              "Title": "Pedidos.cs",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\WebAPI\\Pedidos.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Pedidos.cs",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\WebAPI\\Pedidos.cs",
+              "RelativeToolTip": "WebAPI\\Pedidos.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-16T17:16:07.643Z",
-              "IsPinned": true,
+              "WhenOpened": "2024-05-16T21:57:57.61Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CrearPedidoComunViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Models\\Pedidos\\PedidoComun\\CrearPedidoComunViewModel.cs",
-              "RelativeDocumentMoniker": "ComercioMVC\\Models\\Pedidos\\PedidoComun\\CrearPedidoComunViewModel.cs",
-              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Models\\Pedidos\\PedidoComun\\CrearPedidoComunViewModel.cs",
-              "RelativeToolTip": "ComercioMVC\\Models\\Pedidos\\PedidoComun\\CrearPedidoComunViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAkwBwAAAAoAAAA",
+              "Title": "PedidosController.cs",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\WebAPI\\Controllers\\PedidosController.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Controllers\\PedidosController.cs",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\WebAPI\\Controllers\\PedidosController.cs",
+              "RelativeToolTip": "WebAPI\\Controllers\\PedidosController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-16T17:36:53.828Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PedidoComun.cs",
-              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\Dominio\\Modelos\\PedidoComun.cs",
-              "RelativeDocumentMoniker": "Dominio\\Modelos\\PedidoComun.cs",
-              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\Dominio\\Modelos\\PedidoComun.cs",
-              "RelativeToolTip": "Dominio\\Modelos\\PedidoComun.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAIBAwBsAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-16T17:40:29.834Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Pedido.cs",
-              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\Dominio\\Modelos\\Pedido.cs",
-              "RelativeDocumentMoniker": "Dominio\\Modelos\\Pedido.cs",
-              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\Dominio\\Modelos\\Pedido.cs",
-              "RelativeToolTip": "Dominio\\Modelos\\Pedido.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAA0wAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-16T17:40:23.587Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CrearPedidoComun.cshtml",
-              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Views\\Pedidos\\CrearPedidoComun.cshtml",
-              "RelativeDocumentMoniker": "ComercioMVC\\Views\\Pedidos\\CrearPedidoComun.cshtml",
-              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Views\\Pedidos\\CrearPedidoComun.cshtml",
-              "RelativeToolTip": "ComercioMVC\\Views\\Pedidos\\CrearPedidoComun.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-16T17:35:19.473Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "ComercioMVC\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "ComercioMVC\\Controllers\\UsuarioController.cs",
-              "ViewState": "AQIAADcAAAAAAAAAAAA2wDcAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-16T15:33:41.775Z",
+              "WhenOpened": "2024-05-16T21:09:29.952Z",
               "EditorCaption": ""
             }
           ]

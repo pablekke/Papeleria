@@ -23,7 +23,6 @@ namespace Servicios
             Modelo modelo = _mapeador.Map<Modelo>(dto);
             modelo.Validar();
             ControlesAntesDeCrear(dto);
-            ControlesAntesDeCrear(modelo);
             _repositorio.Crear(modelo);
         }
 
@@ -47,9 +46,6 @@ namespace Servicios
 
         #region  Excepciones y controles
         protected virtual void ControlesAntesDeCrear(DTO dto)
-        {
-        }
-        protected virtual void ControlesAntesDeCrear(Modelo modelo)
         {
         }
         protected virtual void ControlesAntesDeActualizar(int id, DTO dto)

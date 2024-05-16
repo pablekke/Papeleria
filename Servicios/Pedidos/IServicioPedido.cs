@@ -10,6 +10,5 @@ namespace Servicios
         IEnumerable<PedidoDTO> GetPedidosAnulados();
         IEnumerable<PedidoDTO> GetPedidosNoEntregadosPorFecha(DateTime? fechaEmision);
         IEnumerable<PedidoDTO> GetPedidosConMontoSuperiorA(double monto);
-        
     }
 }

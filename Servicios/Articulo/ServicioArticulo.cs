@@ -45,7 +45,6 @@ namespace Servicios
                 throw new Exception("Ya existe un artículo con el mismo nombre.");
             }
         }
-
         protected override void ControlesAntesDeActualizar(int id, ArticuloDTO dto)
         {
             var modeloActual = _repositorio.GetPorId(id);
