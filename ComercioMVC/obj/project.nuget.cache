@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nnPhpbBrhRMCKSKEfFwc/Lsdc6RLw19gRTmuyzH9zFyC661sC9eOuxPUN70k8gC5oSsGuELGcq3+wa8ez/YtoA==",
+  "dgSpecHash": "e6PE4JTdSpHrUIjmdBsaOb7BhNP0mYvRO0Tfsf8GI2da+VLNcwzx5Anc46flzq2Umu2BnCTSJDrrXXchz8AYqA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\ComercioMVC\\ComercioMVC.csproj",
+  "projectFilePath": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\ComercioMVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pableke\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\pableke\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

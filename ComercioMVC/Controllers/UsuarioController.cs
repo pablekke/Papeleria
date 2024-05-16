@@ -1,8 +1,6 @@
 ﻿using ComercioMVC.Models;
 using Dominio.DTOs;
-using Dominio.Modelos;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using Servicios;
 
 namespace ComercioMVC.Controllers
@@ -98,6 +96,20 @@ namespace ComercioMVC.Controllers
                 ViewBag.Error = ex.Message;
             }
             return View(formulario);
+        }
+
+        public IActionResult EliminarCliente(int id) {
+            chequeoUsuarioValido();
+            try
+            {
+                _servicioCliente.Borrar(id);
+                return RedirectToAction("Clientes");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorEliminar = ex.Message;
+            }
+            return RedirectToAction("Clientes");
         }
         #endregion
 

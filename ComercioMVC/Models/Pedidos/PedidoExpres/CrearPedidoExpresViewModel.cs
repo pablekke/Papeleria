@@ -1,23 +1,44 @@
-﻿//using Dominio.DTOs;
-//using System.ComponentModel.DataAnnotations;
+﻿using Dominio.DTOs;
+using Dominio.Modelos;
+using System.ComponentModel.DataAnnotations;
 
-//namespace ComercioMVC.Models.Pedidos
-//{
-//    public class CrearPedidoExpressViewModel
-//    {
-//        [Required(ErrorMessage = "Debe seleccionar un cliente.")]
-//        public int ClienteId { get; set; }
+namespace ComercioMVC.Models
+{
+    public class PedidoExpresViewModel
+    {
+        public int PedidoId { get; set; }
+        public int ClienteId { get; set; }
+        public int ArticuloId { get; set; }
+        public ClienteDTO Cliente { get; set; }
 
-//        [Required]
-//        public DateTime FechaEntrega { get; set; }
-//        public IEnumerable<ClienteDTO> Clientes { get; set; }
-//        public IEnumerable<ArticuloDTO> Articulos { get; set; }
-//        [MinLength(1, ErrorMessage = "Debe agregar al menos una línea al pedido.")]
-//        public List<LineaPedidoDTO> Lineas { get; set; } = new List<LineaPedidoDTO>();
-//        [Range(1, int.MaxValue, ErrorMessage = "Debe agregar al menos un artículo al pedido.")]
-//        public int TotalArticulos => Lineas.Count;
-//        [Required]
-//        public bool EntregaMismoDia { get; set; }
-//    }
+        [Required(ErrorMessage = "La fecha de entrega es obligatoria.")]
+        [DataType(DataType.Date)]
+        public DateTime FechaEntregaPrometida { get; set; } = DateTime.Now.Date.AddDays(1);
+        public DateTime FechaEntregaMaxima { get; set; } = DateTime.Now.Date.AddDays(PedidoExpres.PlazoEntregaMaximo);
 
-//}
+        public DateTime FechaHoy = DateTime.Now.Date;
+        public List<LineaPedidoDTO> Lineas { get; set; } = new List<LineaPedidoDTO>();
+
+        public IEnumerable<ClienteDTO> Clientes { get; set; }
+        public IEnumerable<ArticuloDTO> Articulos { get; set; }
+        public double Total { get; set; }
+        public int Cantidad { get; set; }
+        public double Recargo { get; set; }
+        public bool EntregaMismoDia { get; set; } = false;
+
+        public PedidoExpresDTO CrearDTO()
+        {
+            var dto = new PedidoExpresDTO
+            {
+                PedidoId = PedidoId,
+                ClienteId = ClienteId,
+                Cliente = Cliente,
+                FechaEntregaPrometida = FechaEntregaPrometida,
+                Lineas = Lineas,
+                Total = Total,
+                EntregaMismoDia = EntregaMismoDia
+            };
+            return dto;
+        }
+    }
+}

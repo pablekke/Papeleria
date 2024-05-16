@@ -70,7 +70,6 @@ namespace Dominio.Modelos
         {
             EntregaMismoDia = pedido.EntregaMismoDia;
             base.Copiar(pedido);
-            Total = pedido.Total;
         }
         #endregion
     }

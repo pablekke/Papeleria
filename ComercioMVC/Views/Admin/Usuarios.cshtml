@@ -1,9 +1,7 @@
-﻿@{
-    Layout = "_LayoutAdmin";
-}
-@model ListarUsuariosViewModel
+﻿@model ListarUsuariosViewModel
 
 @{
+    Layout = "_LayoutAdmin";
     ViewData["Title"] = "Lista de Usuarios";
     var mensajeExito = TempData["MensajeExito"] as string;
     var mensajeEliminacionExitosa = TempData["EliminacionExitosa"] as string;
@@ -41,13 +39,13 @@
 <div class="container mt-3">
     <h1>@ViewData["Title"]</h1>
     <!-- Búsqueda y filtros -->
-    <form asp-action="Index" method="get" class="bg-light border rounded">
+    <form asp-action="Usuarios" method="get" class="bg-light border rounded">
         <div class="form-group row justify-content-sm-center justify-content-md-start justify-content-lg-center">
-            <!-- Cuadro de búsqueda que ocupa 5 columnas en md y 4 en lg -->
+            <!-- Cuadro de búsqueda -->
             <div class="col-10 col-md-5 col-lg-4 mb-2 mb-md-0 ml-lg-0">
                 <input type="text" name="n" class="form-control" placeholder="🔍 Buscar nombre o email..." style="background-color: #ebc49f73;">
             </div>
-            <!-- Contenedor para los radios, usando flex para alinear; ocupan 6 columnas en md y 4 en lg -->
+            <!-- Contenedor para los radios -->
             <div class="col-10 justify-content-md-between justify-content-lg-center col-md-6 col-lg-4 my-auto d-md-flex ml-sm-3 ml-lg-0">
                 <div class="custom-control custom-radio">
                     <input type="radio" id="radioTodos" name="esAdmin" class="custom-control-input" value="" checked>
@@ -62,7 +60,7 @@
                     <label class="custom-control-label" for="radioNoAdmins">No Admins</label>
                 </div>
             </div>
-            <!-- Botón de filtrar centrado y con un ancho del 50% en md, igual que el cuadro de texto en lg -->
+            <!-- Botón de filtrar -->
             <div class="col-10 col-md-5 col-lg-4 mt-lg-0 mt-sm-2 ml-lg-0">
                 <button type="submit" class="boton btn-block fondoMarron rounded-3" style="width: 100%;">Filtrar</button>
             </div>
@@ -128,41 +126,45 @@
         </table>
     </div>
 </div>
-<script>
-    window.addEventListener('resize', function () {
-        updateTableHeader();
-        if (window.innerWidth >= 768) {
-            closeAllDetails();
-        }
-    });
 
-    function toggleDetails(button) {
-        const mainRow = button.closest('.main-row');
-        const detailsRow = mainRow.nextElementSibling;
-        if (detailsRow.classList.contains('details-row')) {
-            detailsRow.classList.toggle('d-none');
-            button.innerHTML = detailsRow.classList.contains('d-none') ? '<i class="fa fa-chevron-down"></i>' : '<i class="fa fa-chevron-up"></i>';
-        }
-    }
-
-    function closeAllDetails() {
-        document.querySelectorAll('.details-row').forEach(function (row) {
-            row.classList.add('d-none');
+@section Scripts{
+    @*para la notificación*@
+    <script>
+        window.addEventListener('resize', function () {
+            updateTableHeader();
+            if (window.innerWidth >= 768) {
+                closeAllDetails();
+            }
         });
-        document.querySelectorAll('.btn-toggle').forEach(function (button) {
-            button.innerHTML = '<i class="fa fa-chevron-down"></i>';
-        });
-    }
 
-    function updateTableHeader() {
-        const thead = document.querySelector('thead');
-        if (window.innerWidth < 768) {
-            thead.classList.add('d-none');
-        } else {
-            thead.classList.remove('d-none');
+        function toggleDetails(button) {
+            const mainRow = button.closest('.main-row');
+            const detailsRow = mainRow.nextElementSibling;
+            if (detailsRow.classList.contains('details-row')) {
+                detailsRow.classList.toggle('d-none');
+                button.innerHTML = detailsRow.classList.contains('d-none') ? '<i class="fa fa-chevron-down"></i>' : '<i class="fa fa-chevron-up"></i>';
+            }
         }
-    }
 
-    // Call updateTableHeader on page load to set the initial state
-    document.addEventListener('DOMContentLoaded', updateTableHeader);
-</script>
+        function closeAllDetails() {
+            document.querySelectorAll('.details-row').forEach(function (row) {
+                row.classList.add('d-none');
+            });
+            document.querySelectorAll('.btn-toggle').forEach(function (button) {
+                button.innerHTML = '<i class="fa fa-chevron-down"></i>';
+            });
+        }
+
+        function updateTableHeader() {
+            const thead = document.querySelector('thead');
+            if (window.innerWidth < 768) {
+                thead.classList.add('d-none');
+            } else {
+                thead.classList.remove('d-none');
+            }
+        }
+
+        // Call updateTableHeader on page load to set the initial state
+        document.addEventListener('DOMContentLoaded', updateTableHeader);
+    </script>
+}

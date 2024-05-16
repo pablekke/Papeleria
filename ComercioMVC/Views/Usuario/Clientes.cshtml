@@ -44,6 +44,7 @@
                     <th>RUT</th>
                     <th>Dirección</th>
                     <th>Distancia</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -57,6 +58,12 @@
                         <td>@cliente.RUT</td>
                         <td>@cliente.Direccion.Ciudad, @cliente.Direccion.Calle @cliente.Direccion.NumeroPuerta</td>
                         <td>@cliente.Distancia Km</td>
+                        <td>
+                            <a href="@Url.Action("EliminarCliente", "Usuario", new { id = cliente.ClienteId })" class="btn eliminarLinea text-danger">
+                                Eliminar
+                            </a>
+                            <span class="text-danger">@ViewBag.ErrorEliminar</span>
+                        </td>
                         <span class="text-danger">@ViewBag.Error</span>
                     </tr>
                 }

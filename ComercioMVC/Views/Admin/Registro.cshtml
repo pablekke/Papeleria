@@ -10,6 +10,14 @@
             @Html.AntiForgeryToken()
             <h3 class="mb-3">Registrar usuario</h3> 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-check">
+                <label class="switch">
+                    Es administrador
+                    <input type="checkbox" asp-for="EsAdmin" class="admin-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control" placeholder="Pablo" />
@@ -30,20 +38,21 @@
                 <label asp-for="Contraseña">Contraseña</label>
                 <input asp-for="Contraseña" type="password" class="form-control" id="Contraseña" name="Contraseña" placeholder="*******" required>
                 <span asp-validation-for="Contraseña" class="text-danger"></span>
+                <small id="contraseñaHelp" class="form-text text-muted">
+                    Debe contener al menos:
+                    <ul>
+                        <li>más de 6 caracteres</li>
+                        <li>Una letra minúscula</li>
+                        <li>Una letra mayúscula</li>
+                        <li>Un número</li>
+                        <li>Un carácter de puntuación (.,;!).</li>
+                    </ul>
+                </small>
             </div>
-
             <div class="form-group">
                 <label asp-for="ConfirmarContraseña" class="control-label">Confirmar contraseña</label>
                 <input asp-for="ConfirmarContraseña" class="form-control" placeholder="*******" />
                 <span asp-validation-for="ConfirmarContraseña" class="text-danger"></span>
-            </div>
-
-            <div class="form-group form-check">
-                <label class="switch">
-                    Es administrador
-                    <input type="checkbox" asp-for="EsAdmin" class="admin-toggle">
-                    <span class="slider round"></span>
-                </label>
             </div>
 
             <div class="form-group">

@@ -10,6 +10,29 @@ namespace AccesoADatos
             _contexto = contexto;
         }
 
+        public void AnularPedido(int id)
+        {
+            // Obtener el pedido por su ID
+            var pedido = _contexto.Set<Pedido>().FirstOrDefault(p => p.PedidoId == id);
+
+            // Verificar si el pedido existe
+            if (pedido == null)
+            {
+                throw new ArgumentException($"No se encontró ningún pedido con el ID {id}");
+            }
+
+            // Marcar el pedido como anulado
+            pedido.Anulado = true;
+
+            // Guardar los cambios en la base de datos
+            _contexto.SaveChanges();
+        }
+
+        public Pedido GetPedidoPorId(int id)
+        {
+            return _contexto.Set<Pedido>().FirstOrDefault(p => p.PedidoId == id);
+        }
+
         public IEnumerable<Pedido> GetPedidos()
         {
             return _contexto.Set<Pedido>().ToList();
@@ -24,14 +47,17 @@ namespace AccesoADatos
                 .Where(p => p.Anulado)
                 .OrderByDescending(p => p.FechaEmision);
         }
-        public IEnumerable<Pedido> GetPedidosNoEntregadosPorFecha(DateTime fechaEmision)
+        public IEnumerable<Pedido> GetPedidosNoEntregadosPorFecha(DateTime? fechaEmision)
         {
-            return _contexto.Set<Pedido>()
-                            //pedidos de la fecha argumento que no hayan sido entregados, ni anulados
-                            .Where(p => p.FechaEmision.Date == fechaEmision.Date &&
-                                       !p.Entregado &&
-                                       !p.Anulado)
-                            .Include(p => p.Cliente);
+            //pedidos de la fecha argumento que no hayan sido entregados, ni anulados
+            IEnumerable<Pedido> pedidos = _contexto.Set<Pedido>().Include(p => p.Cliente)
+                                                    .Where(p => !p.Entregado && !p.Anulado);
+            if (fechaEmision != null)
+            {
+                DateTime fecha = (DateTime)fechaEmision;
+                pedidos = pedidos.Where(p => p.FechaEmision.Date == fecha.Date);
+            }
+            return pedidos.OrderBy(p => p.Cliente.Nombre);
         }
 
         public IEnumerable<Pedido> PedidosConMontoSuperiorA(double monto)

@@ -38,12 +38,11 @@ namespace Servicios
             ExcepcionSiClaseNula(dto);
             ControlesAntesDeActualizar(id, dto);
 
-            var usuarioOriginal = _repositorio.GetPorId(id);
-            var usuarioActualizado = _mapeador.Map<Modelo>(dto);
+            var original = _repositorio.GetPorId(id);
+            var actualizado = _mapeador.Map<Modelo>(dto);
 
-            usuarioOriginal.Copiar(usuarioActualizado);
-            usuarioOriginal.Validar();
-            _repositorio.Actualizar(usuarioOriginal);
+            original.Copiar(actualizado);
+            _repositorio.Actualizar(original);
         }
 
         #region  Excepciones y controles

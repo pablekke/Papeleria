@@ -1,18 +1,29 @@
 ﻿using AccesoADatos;
 using AutoMapper;
 using Dominio.DTOs;
+using Dominio.Modelos;
 
 namespace Servicios
 {
-    public class ServicioPedido : IServicioPedido
+    public class ServicioPedido : Servicio<Pedido, PedidoDTO>, IServicioPedido
     {
         private readonly IRepositorioPedido _repositorio;
-        private readonly IMapper _mapeador;
-        public ServicioPedido(IMapper mapeador, IRepositorioPedido repositorio)
+        public ServicioPedido(IMapper mapeador, IRepositorioPedido repositorio) : base(mapeador, repositorio)
         {
             _repositorio = repositorio;
-            _mapeador = mapeador;
         }
+
+        public void AnularPedido(int id)
+        {
+            _repositorio.AnularPedido(id);
+        }
+
+        public PedidoDTO GetPedidoPorId(int id)
+        {
+            var pedido = _repositorio.GetPedidoPorId(id);
+            return _mapeador.Map<PedidoDTO>(pedido);
+        }
+
         public IEnumerable<PedidoDTO> GetPedidos()
         {
             var pedidos = _repositorio.GetPedidos();
@@ -31,7 +42,7 @@ namespace Servicios
             return _mapeador.Map<IEnumerable<PedidoDTO>>(pedidos);
         }
 
-        public IEnumerable<PedidoDTO> GetPedidosNoEntregadosPorFecha(DateTime fechaEmision)
+        public IEnumerable<PedidoDTO> GetPedidosNoEntregadosPorFecha(DateTime? fechaEmision)
         {
             var pedidos = _repositorio.GetPedidosNoEntregadosPorFecha(fechaEmision);
             return _mapeador.Map<IEnumerable<PedidoDTO>>(pedidos);

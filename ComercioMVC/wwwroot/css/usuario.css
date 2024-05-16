@@ -17,6 +17,11 @@ html {
     font-weight: 700;
     font-style: normal;
 }
+
+a {
+    text-decoration: none;
+}
+
 .boton {
     width: 100%;
     height: 50px;
@@ -47,7 +52,7 @@ html {
     align-items: center;
 }
 
-.usuario-toggle {
+.admin-toggle {
     opacity: 0;
     position: absolute;
     width: 0;
@@ -77,15 +82,15 @@ html {
         border-radius: 50%;
     }
 
-.usuario-toggle:checked + .slider {
+.admin-toggle:checked + .slider {
     background-color: #B0C5A4;
 }
 
-.usuario-toggle:focus + .slider {
+.admin-toggle:focus + .slider {
     box-shadow: 0 0 1px #B0C5A4;
 }
 
-.usuario-toggle:checked + .slider:before {
+.admin-toggle:checked + .slider:before {
     transform: translateX(26px);
 }
 

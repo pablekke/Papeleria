@@ -1,116 +1,143 @@
-﻿@*
-@model CrearPedidoExpressViewModel
+﻿@model PedidoExpresViewModel
 
 @{
     Layout = "_LayoutUsuario";
-    ViewData["Title"] = "Crear Pedido exprés";
+    ViewData["Title"] = "Crear pedido exprés";
+    string FechaMin = Model.FechaEntregaPrometida.ToString("yyyy-MM-dd");
+    string FechaMax = Model.FechaEntregaMaxima.ToString("yyyy-MM-dd");
+    string fechaHoy = Model.FechaHoy.ToString("yyyy-MM-dd");
 }
 
-<h2>@ViewData["Title"]</h2>
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+        <form id="formCrearPedidoExpres" asp-action="CrearPedidoExpres" method="post">
+            <div class="row justify-content-between mt-5">
+                <!-- Columna para datos del cliente y artículo -->
+                <div class="cajaClienteFechaArticulo formulario col-lg-4 col-12">
+                    <h3 class="mt-2">@ViewData["Title"]</h3>
+                    <div class="form-group form-check">
+                        <label class="switch">
+                            Entrega Hoy
+                            <input type="checkbox" asp-for="EntregaMismoDia" class="admin-toggle" onchange='submitForm()'>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="fondoFechaCliente">
+                        <div class="form-group">
+                            <label asp-for="ClienteId" class="control-label">Cliente</label>
+                            <select asp-for="ClienteId" required>
+                                <option value="">Nombre - Razón social</option>
+                                @if (Model.Clientes != null)
+                                {
+                                    foreach (var cliente in Model.Clientes)
+                                    {
+                                        <option value="@cliente.ClienteId">@cliente.Nombre @cliente.Apellido - @cliente.RazonSocial</option>
+                                    }
+                                }
+                            </select>
+                        </div>
 
-<form asp-action="AgregarLineaExpress" method="post">
-    @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <label asp-for="FechaEntregaPrometida" class="control-label">Fecha de entrega</label>
+                            @if (Model.EntregaMismoDia == true)
+                            {
+                                <input asp-for="FechaEntregaPrometida" type="date" class="form-control" value="@fechaHoy" disabled />
+                            }
+                            else
+                            {
+                                <input asp-for="FechaEntregaPrometida" type="date" class="form-control" value="@FechaMin" min="@FechaMin" max="@FechaMax" required />
+                            }
+                        </div>
+                    </div>
 
-    <div class="form-group">
-        <label asp-for="ClienteId">Cliente</label>
-        <select asp-for="ClienteId" asp-items="@(new SelectList(Model.Clientes, "Id", "Nombre"))" class="form-control">
-            <option value="">Seleccione un cliente</option>
-        </select>
-        <span asp-validation-for="ClienteId" class="text-danger"></span>
+                    <div class="fondoCrearLinea">
+                        <div class="form-group">
+                            <label asp-for="ArticuloId" class="control-label">Artículo</label>
+                            <select asp-for="ArticuloId" required>
+                                <option value="">Nombre - $Precio +Stock</option>
+                                @if (Model.Articulos != null)
+                                {
+                                    foreach (var articulo in Model.Articulos)
+                                    {
+                                        <option value="@articulo.ArticuloId">@articulo.Nombre - $@articulo.Precio +@articulo.Stock </option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Cantidad">Cantidad</label>
+                            <input asp-for="Cantidad" type="number" min="1" value="1" class="form-control" required />
+                        </div>
+                        <div>
+                            <button type="submit" name="accion" value="AñadirLinea" class="btn btn-block boton fondo4 mt-2">Agregar Línea</button>
+                            <span class="d-block text-danger text-center my-3">@ViewBag.ErrorLinea</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna para detalles del pedido -->
+                @if (Model.Lineas != null && Model.Lineas.Count > 0)
+                {
+                    <div class="col-lg-7 col-12 text-center formulario mt-sm-4 mt-lg-0">
+
+                        <h3 class="mt-2">Detalle del pedido</h3>
+                        <div class="cajaDetalle">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Artículo</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio</th>
+                                        <th>Subtotal</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < Model.Lineas.Count; i++)
+                                    {
+                                        <tr>
+                                            <td>@Model.Lineas[i].Articulo.Nombre</td>
+                                            <td>@Model.Lineas[i].Cantidad</td>
+                                            <td>@Model.Lineas[i].Articulo.Precio</td>
+                                            <td>@(Model.Lineas[i].Articulo.Precio * Model.Lineas[i].Cantidad)</td>
+                                            <td>
+                                                <button type="submit" name="accion" value="RemoverLinea" class="eliminarLinea text-danger">Eliminar</button>
+                                                <input type="hidden" name="indiceLinea" value="@i" />
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="total my-3">
+                            <span>Productos: $@Model.Total -</span>
+                            <span>Recargo: $@Model.Recargo -</span>
+                            <span><strong>Total: $@(Model.Recargo + Model.Total)</strong></span>
+                        </div>
+                        <div class="">
+                            <button type="submit" name="accion" value="CrearPedido" class="btn btn-block boton fondo1 w-75">Crear Pedido</button>
+                            <span class="d-block text-danger text-center my-3">@ViewBag.ErrorPedido</span>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center mt-5">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <h2 class="centrado-con-icono">¡AGREGA TU PRIMER ARTÍCULO! <i class="fas fa-shopping-cart"></i></h2>
+                        </div>
+                    </div>
+                }
+            </div>
+        </form>
     </div>
-
-    <div class="form-group">
-        <label>Artículo</label>
-        <select id="ArticuloId" class="form-control">
-            @foreach (var articulo in Model.Articulos)
-            {
-                <option value="@articulo.Id">@articulo.Nombre</option>
-            }
-        </select>
-    </div>
-
-    <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="entregaMismoDia" asp-for="EntregaMismoDia">
-        <label class="custom-control-label" for="entregaMismoDia">Entrega el mismo día</label>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Agregar Línea</button>
-</form>
-
-<div>
-    <h3>Detalle del Pedido</h3>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Descripción</th>
-                <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var linea in Model.Lineas)
-            {
-                <tr>
-                    <td>@linea.Descripcion</td>
-                    <td>@linea.Cantidad</td>
-                    <td>@linea.PrecioUnitario</td>
-                    <td>@linea.Subtotal</td>
-                </tr>
-            }
-        </tbody>
-    </table>
 </div>
 
 @section Scripts {
     <script>
-        // Esta función agrega una nueva línea de pedido al formulario
-        function agregarLinea() {
-            var articuloId = document.getElementById('ArticuloId').value;
-            var articuloNombre = document.getElementById('ArticuloId').options[document.getElementById('ArticuloId').selectedIndex].text;
-            var cantidad = 1; // Puedes ajustar para permitir seleccionar cantidad
-
-            // Crear los elementos HTML para la nueva línea
-            var tbody = document.querySelector('table tbody');
-            var tr = document.createElement('tr');
-
-            tr.innerHTML = `
-                        <td>${articuloNombre}</td>
-                        <td><input type="number" value="${cantidad}" class="form-control" readonly/></td>
-                        <td><input type="text" class="form-control" readonly/></td>
-                        <td><input type="text" class="form-control subtotal" readonly/></td>
-                        <td><button type="button" class="btn btn-danger" onclick="eliminarLinea(this)">Eliminar</button></td>
-                    `;
-
-            // Agregar la nueva línea a la tabla
-            tbody.appendChild(tr);
-
-            // Opcional: Actualizar el total
-            actualizarTotal();
+        function submitForm() {
+            document.querySelector('button[name="accion"]').value = "";
+            document.getElementById("formCrearPedidoExpres").submit();
         }
-
-        // Esta función elimina una línea de pedido existente
-        function eliminarLinea(button) {
-            var tr = button.parentNode.parentNode;
-            tr.parentNode.removeChild(tr);
-
-            // Opcional: Actualizar el total
-            actualizarTotal();
-        }
-
-        // Esta función actualiza el total de todos los subtotales
-        function actualizarTotal() {
-            var subtotales = document.querySelectorAll('.subtotal');
-            var total = 0;
-            subtotales.forEach(function (subtotal) {
-                total += parseFloat(subtotal.value) || 0;
-            });
-            document.getElementById('total').value = total.toFixed(2);
-        }
-
-        // Event listeners
-        document.getElementById('agregarLinea').addEventListener('click', agregarLinea);
-
     </script>
 }
-*@

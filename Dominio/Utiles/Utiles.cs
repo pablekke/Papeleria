@@ -58,6 +58,24 @@ namespace Dominio
             string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, pattern);
         }
+
+        public static void ValidarContraseña(string contraseña)
+        {
+            // Verificar la longitud mínima de 6 caracteres
+            if (contraseña.Length < 6)
+            {
+                throw new ExcepcionElementoInvalido("La contraseña debe tener al menos 6 caracteres.");
+            }
+
+            // Verificar si contiene al menos una letra mayúscula, una minúscula, un dígito y un carácter de puntuación
+            string patron = @"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[.,;!])[A-Za-z\d.,;!]+$";
+
+            if (!Regex.IsMatch(contraseña, patron))
+            {
+                throw new ExcepcionElementoInvalido("La contraseña no cumple con los requisitos mínimos.");
+            }
+        }
+
         public static void ExcepcionSiListaVacia<T>(IEnumerable<T> lista, string mensaje)
         {
             if (!lista.Any())

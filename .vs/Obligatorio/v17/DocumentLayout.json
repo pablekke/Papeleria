@@ -1,18 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\",
+  "WorkspaceRootPath": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|c:\\users\\pableke\\desktop\\obigatorio010524\\papeleria\\dominio\\modelos\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|solutionrelative:dominio\\modelos\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\comerciomvc\\views\\pedidos\\pendientes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|solutionrelative:comerciomvc\\views\\pedidos\\pendientes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|c:\\users\\pableke\\desktop\\obigatorio010524\\papeleria\\dominio\\utiles\\utiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|solutionrelative:dominio\\utiles\\utiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\comerciomvc\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|solutionrelative:comerciomvc\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|c:\\users\\pableke\\desktop\\obigatorio010524\\papeleria\\dominio\\modelos\\pedidocomun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{278F5862-C0B1-42C8-9A6D-508F57E85A96}|Dominio\\Dominio.csproj|solutionrelative:dominio\\modelos\\pedidocomun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\comerciomvc\\views\\pedidos\\anulados.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|solutionrelative:comerciomvc\\views\\pedidos\\anulados.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDDEC24A-5C4E-47EF-90EA-5FB520B2D164}|AccesoADatos\\AccesoADatos.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\accesoadatos\\pedidos\\pedido\\repositoriopedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDDEC24A-5C4E-47EF-90EA-5FB520B2D164}|AccesoADatos\\AccesoADatos.csproj|solutionrelative:accesoadatos\\pedidos\\pedido\\repositoriopedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDDEC24A-5C4E-47EF-90EA-5FB520B2D164}|AccesoADatos\\AccesoADatos.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\accesoadatos\\pedidos\\pedido\\irepositoriopedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDDEC24A-5C4E-47EF-90EA-5FB520B2D164}|AccesoADatos\\AccesoADatos.csproj|solutionrelative:accesoadatos\\pedidos\\pedido\\irepositoriopedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE3B07E7-FD84-4CA9-A6A8-6178781FD533}|Servicios\\Servicios.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\servicios\\pedidos\\iserviciopedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE3B07E7-FD84-4CA9-A6A8-6178781FD533}|Servicios\\Servicios.csproj|solutionrelative:servicios\\pedidos\\iserviciopedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE3B07E7-FD84-4CA9-A6A8-6178781FD533}|Servicios\\Servicios.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\servicios\\pedidos\\serviciopedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE3B07E7-FD84-4CA9-A6A8-6178781FD533}|Servicios\\Servicios.csproj|solutionrelative:servicios\\pedidos\\serviciopedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE3B07E7-FD84-4CA9-A6A8-6178781FD533}|Servicios\\Servicios.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\servicios\\general\\servicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE3B07E7-FD84-4CA9-A6A8-6178781FD533}|Servicios\\Servicios.csproj|solutionrelative:servicios\\general\\servicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\comerciomvc\\models\\pedidos\\pedidosviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{69B95F6A-619F-4652-9300-AC579032998A}|ComercioMVC\\ComercioMVC.csproj|solutionrelative:comerciomvc\\models\\pedidos\\pedidosviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE3B07E7-FD84-4CA9-A6A8-6178781FD533}|Servicios\\Servicios.csproj|c:\\users\\pableke\\desktop\\obligatorio50524\\servicios\\general\\iservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE3B07E7-FD84-4CA9-A6A8-6178781FD533}|Servicios\\Servicios.csproj|solutionrelative:servicios\\general\\iservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,7 +49,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 892,
+          "DockedWidth": 487,
           "SelectedChildIndex": 3,
           "Children": [
             {
@@ -35,39 +63,134 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Utiles.cs",
-              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\Dominio\\Utiles\\Utiles.cs",
-              "RelativeDocumentMoniker": "Dominio\\Utiles\\Utiles.cs",
-              "ToolTip": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\Dominio\\Utiles\\Utiles.cs",
-              "RelativeToolTip": "Dominio\\Utiles\\Utiles.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAJAAAA",
+              "Title": "PedidosController.cs",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Controllers\\PedidosController.cs",
+              "RelativeDocumentMoniker": "ComercioMVC\\Controllers\\PedidosController.cs",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Controllers\\PedidosController.cs",
+              "RelativeToolTip": "ComercioMVC\\Controllers\\PedidosController.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAiwEgAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T20:35:04.845Z"
+              "WhenOpened": "2024-05-16T01:40:17.815Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\Dominio\\Modelos\\Usuario.cs",
-              "RelativeDocumentMoniker": "Dominio\\Modelos\\Usuario.cs",
-              "ToolTip": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\Dominio\\Modelos\\Usuario.cs",
-              "RelativeToolTip": "Dominio\\Modelos\\Usuario.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAuwCUAAABHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T20:31:39.171Z",
+              "Title": "Pendientes.cshtml",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Views\\Pedidos\\Pendientes.cshtml",
+              "RelativeDocumentMoniker": "ComercioMVC\\Views\\Pedidos\\Pendientes.cshtml",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Views\\Pedidos\\Pendientes.cshtml",
+              "RelativeToolTip": "ComercioMVC\\Views\\Pedidos\\Pendientes.cshtml",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAC0AAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-16T02:08:58.55Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PedidoComun.cs",
-              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\Dominio\\Modelos\\PedidoComun.cs",
-              "RelativeDocumentMoniker": "Dominio\\Modelos\\PedidoComun.cs",
-              "ToolTip": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\Dominio\\Modelos\\PedidoComun.cs",
-              "RelativeToolTip": "Dominio\\Modelos\\PedidoComun.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAABHAAAA",
+              "Title": "Anulados.cshtml",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Views\\Pedidos\\Anulados.cshtml",
+              "RelativeDocumentMoniker": "ComercioMVC\\Views\\Pedidos\\Anulados.cshtml",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Views\\Pedidos\\Anulados.cshtml",
+              "RelativeToolTip": "ComercioMVC\\Views\\Pedidos\\Anulados.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAoAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-16T02:01:03.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Servicio.cs",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\Servicios\\General\\Servicio.cs",
+              "RelativeDocumentMoniker": "Servicios\\General\\Servicio.cs",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\Servicios\\General\\Servicio.cs",
+              "RelativeToolTip": "Servicios\\General\\Servicio.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAIAywCkAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T18:42:18.06Z"
+              "WhenOpened": "2024-05-16T04:07:54.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IServicioPedido.cs",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\Servicios\\Pedidos\\IServicioPedido.cs",
+              "RelativeDocumentMoniker": "Servicios\\Pedidos\\IServicioPedido.cs",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\Servicios\\Pedidos\\IServicioPedido.cs",
+              "RelativeToolTip": "Servicios\\Pedidos\\IServicioPedido.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T03:48:03.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IRepositorioPedido.cs",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\AccesoADatos\\Pedidos\\Pedido\\IRepositorioPedido.cs",
+              "RelativeDocumentMoniker": "AccesoADatos\\Pedidos\\Pedido\\IRepositorioPedido.cs",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\AccesoADatos\\Pedidos\\Pedido\\IRepositorioPedido.cs",
+              "RelativeToolTip": "AccesoADatos\\Pedidos\\Pedido\\IRepositorioPedido.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAcAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T03:38:50.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RepositorioPedido.cs",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\AccesoADatos\\Pedidos\\Pedido\\RepositorioPedido.cs",
+              "RelativeDocumentMoniker": "AccesoADatos\\Pedidos\\Pedido\\RepositorioPedido.cs",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\AccesoADatos\\Pedidos\\Pedido\\RepositorioPedido.cs",
+              "RelativeToolTip": "AccesoADatos\\Pedidos\\Pedido\\RepositorioPedido.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAIA0wBsAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T03:39:19.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ServicioPedido.cs",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\Servicios\\Pedidos\\ServicioPedido.cs",
+              "RelativeDocumentMoniker": "Servicios\\Pedidos\\ServicioPedido.cs",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\Servicios\\Pedidos\\ServicioPedido.cs",
+              "RelativeToolTip": "Servicios\\Pedidos\\ServicioPedido.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAkAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T03:37:42.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IServicio.cs",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\Servicios\\General\\IServicio.cs",
+              "RelativeDocumentMoniker": "Servicios\\General\\IServicio.cs",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\Servicios\\General\\IServicio.cs",
+              "RelativeToolTip": "Servicios\\General\\IServicio.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T03:47:27.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PedidosViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Models\\Pedidos\\PedidosViewModel.cs",
+              "RelativeDocumentMoniker": "ComercioMVC\\Models\\Pedidos\\PedidosViewModel.cs",
+              "ToolTip": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\ComercioMVC\\Models\\Pedidos\\PedidosViewModel.cs",
+              "RelativeToolTip": "ComercioMVC\\Models\\Pedidos\\PedidosViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-16T01:43:55.099Z",
+              "EditorCaption": ""
             }
           ]
         }

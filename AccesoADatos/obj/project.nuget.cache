@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p3rogE9YOrPVXk1ayrIkU2Ws24wQHP5MoL60FaMy20rYVKqiOv44EHGbKhyawqQ/mG+zS0Q65mSgQZcrBxvznA==",
+  "dgSpecHash": "a//IefnKF9JcFyVTaxe8WY2whtJDWlN+VjyCNfgxPvXpvquRD5b0eTnHupso5A3nfZIgfXXkw/rp+e/HLOrr/g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\AccesoADatos\\AccesoADatos.csproj",
+  "projectFilePath": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\AccesoADatos\\AccesoADatos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pableke\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\pableke\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

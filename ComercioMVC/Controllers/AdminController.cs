@@ -12,21 +12,27 @@ namespace ComercioMVC.Controllers
         {
             _servicioUsuario = servicioUsuario;
         }
-        // GET: UsuarioController
-        public ActionResult Usuarios(string n = "", string esAdmin = "")
+
+        private IActionResult? chequeoUsuarioValido()
         {
+
             int? id = HttpContext.Session.GetInt32("Id");
             bool UsuarioEsAdmin = HttpContext.Session.GetString("EsAdmin") == "true";
             if (id == null)
             {
                 return RedirectToAction("Login", "Cuenta");
             }
-
-            // Redirigir a los usuarios no administradores a su panel de control
-            if (!UsuarioEsAdmin)
+            // Redirigir a los usuarios administradores a su panel de control
+            if (UsuarioEsAdmin)
             {
-                return RedirectToAction("Clientes", "Usuario");
+                return RedirectToAction("Usuarios", "Admin");
             }
+            return null;
+        }
+        // GET: UsuarioController
+        public ActionResult Usuarios(string n = "", string esAdmin = "")
+        {
+            chequeoUsuarioValido();
 
             // Obtener usuarios filtrados por nombre o email y rol
             IEnumerable<UsuarioDTO> usuarios = _servicioUsuario.GetUsuarioPorString(n);
@@ -82,6 +88,7 @@ namespace ComercioMVC.Controllers
         [HttpGet]
         public IActionResult Editar(int id)
         {
+            chequeoUsuarioValido();
             var usuario = _servicioUsuario.GetPorId(id);
             var model = new EditarUsuarioViewModel(usuario);
             return View(model);
@@ -101,7 +108,7 @@ namespace ComercioMVC.Controllers
                     _servicioUsuario.Actualizar(id, usuarioDTO);
                 }
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Usuarios));
             }
             catch (Exception e)
             {
@@ -138,6 +145,7 @@ namespace ComercioMVC.Controllers
         
         public ActionResult Borrar(int id)
         {
+            chequeoUsuarioValido();
             try
             {
                 _servicioUsuario.Borrar(id);
@@ -147,7 +155,7 @@ namespace ComercioMVC.Controllers
             {
                 ViewBag.Error = e.Message;
             }
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Usuarios));
         }
     }
 }

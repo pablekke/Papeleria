@@ -28,7 +28,7 @@ namespace Dominio.Modelos
         public void Validar()
         {
             ValidarNombreYApellido(Nombre, Apellido);
-            Utiles.ExcepcionSiStringVacio(Apellido, "Apellido vacío");
+            Utiles.ValidarContraseña(Contraseña);
             Utiles.ExcepcionSiEmailInvalido(Email, "Email invalido");
             Utiles.ExcepcionSiStringVacio(ContraseñaHasheada, "Contraseña hasheada vacia");
         }

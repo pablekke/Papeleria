@@ -1,0 +1,52 @@
+﻿@model PedidosViewModel
+
+@{
+    Layout = "_LayoutUsuario";
+    ViewData["Title"] = "Pedidos pendientes";
+    string fechaMax = DateTime.Now.Date.ToString("yyyy-MM-dd");
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center mb-4">Pedidos pendiente de entrega</h2>
+
+            <form asp-action="Pendientes" method="post" class="d-flex justify-content-center">
+                <div class="form-group w-50">
+                    <label asp-for="FechaIngresada" class="control-label">Fecha de búsqueda:</label>
+                    <input asp-for="FechaIngresada" type="date" class="form-control mb-2" required />
+                    <span asp-validation-for="FechaIngresada" class="text-danger mb-2"></span>
+                    <button type="submit" class="btn boton fondo1 mb-2">Buscar</button>
+                </div>
+            </form>
+
+            @if (Model.Pedidos.Any())
+            {
+                <div class="list-group">
+                    @foreach (var pedido in Model.Pedidos)
+                    {
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><strong>Total:</strong> $@pedido.Total</h5>
+                                <p class="card-text">
+                                    <strong>Fecha emisión:</strong> @pedido.FechaEmision.ToShortDateString() <br>
+                                    <strong>Fecha prometida de entrega:</strong> @pedido.FechaEntregaPrometida.ToShortDateString() <br>
+                                    <strong>Cliente:</strong> @pedido.Cliente.Nombre @pedido.Cliente.Apellido <br>
+                                    <strong>Email:</strong> @pedido.Cliente.Email <br>
+                                    <strong>Dirección:</strong> @pedido.Cliente.Direccion.Ciudad, @pedido.Cliente.Direccion.Calle @pedido.Cliente.Direccion.NumeroPuerta <br>
+                                    <strong>Razón Social:</strong> @pedido.Cliente.RazonSocial <br>
+                                    <strong>RUT:</strong> @pedido.Cliente.RUT <br>
+                                </p>
+                                <a href="@Url.Action("AnularPedido", new { id = pedido.PedidoId })" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Estás seguro de querer anular este pedido?');">Anular pedido</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p class="text-center">No se encontraron pedidos no entregados para la fecha ingresada.</p>
+            }
+        </div>
+    </div>
+</div>

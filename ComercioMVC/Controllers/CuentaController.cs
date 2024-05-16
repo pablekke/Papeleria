@@ -1,4 +1,5 @@
 ﻿using ComercioMVC.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Servicios;
 
@@ -16,6 +17,16 @@ namespace ComercioMVC.Controllers
         [HttpGet]
         public ActionResult LogIn()
         {
+            int? id = HttpContext.Session.GetInt32("Id");
+            bool UsuarioEsAdmin = HttpContext.Session.GetString("EsAdmin") == "true";
+            if (id != null)
+            {
+                if (UsuarioEsAdmin)
+                {
+                    return RedirectToAction("Usuarios", "Admin");
+                }
+                return RedirectToAction("Clientes", "Usuario");
+            }
             return View();
         }
 

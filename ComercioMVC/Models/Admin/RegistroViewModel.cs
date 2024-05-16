@@ -18,6 +18,7 @@ namespace ComercioMVC.Models
 
         [Required(ErrorMessage = "La contraseña es obligatoria.")]
         [DataType(DataType.Password)]
+        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[.,;!])[A-Za-z\d.,;!]{6,}$")]
         public string Contraseña { get; set; }
 
         [DataType(DataType.Password)]

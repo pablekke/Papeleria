@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ztx7Gq3eqrmbO05ypWYQvdnhF+nCPapRaJati3PF4UhdS+gS4noglGqSOmtO5QFLGgQb42A0TTKh/uCRh1yBGw==",
+  "dgSpecHash": "94XYZJFkmrJSjHFdAkwxM/qQlD7eIdjL/5b7Lmon926Ku9qI5ib3kUQ9limYblyjbif9wFzwFm0eFd4H9rq3ng==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pableke\\Desktop\\obigatorio010524\\Papeleria\\WebAPI\\WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\pableke\\Desktop\\Obligatorio50524\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pableke\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\pableke\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
